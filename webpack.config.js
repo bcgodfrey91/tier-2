@@ -2,7 +2,7 @@ const path = require('path');
 module.exports = {
  entry: {
    main: ['babel-polyfill', './src/index.js'],
-  //  test: ['babel-polyfill', 'mocha!./test/index.js'],
+   test: ['babel-polyfill', 'mocha!./test/unit/unit-test.js'],
  },
  output: {
    path: __dirname,
