@@ -1,27 +1,23 @@
 import React, {Component} from 'react';
-import Example from './Example'
+import firebase from './firebase'
+import SignIn from './SignIn'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-
+      user: null;
     }
-    this.handleClick = this.handleClick.bind(this)
-  }
-
-  handleClick() {
-    
-  }
+}
 
   render() {
+    const { user } = this.state;
+    // if (user) {};
     return (
-      <section>
+      <section className="sign-in-page">
         <h3>Remembr</h3>
         <article>
-          <Example
-            handleClick={this.handleClick}
-          />
+          <SignIn />
         </article>
       </section>
     );

@@ -9,3 +9,4 @@ var config = {
   firebase.initializeApp(config);
 
   module.exports = firebase;
+  // export const provider = new firebase.auth.GoogleAuthProvider();
