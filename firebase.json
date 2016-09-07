@@ -1,0 +1,8 @@
+{
+  "database": {
+    "rules": "default"
+  },
+  "hosting": {
+    "public": "public"
+  }
+}

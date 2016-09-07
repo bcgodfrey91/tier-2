@@ -4,17 +4,12 @@ class Example extends Component {
   render() {
     return (
       <div>
-        <h3>Example!</h3>
-        <h4>{this.props.message}</h4>
-        <h5>{this.props.anotherProp}</h5>
-        <button
-          onClick={this.props.handleClick}
-        >
-          Update Message
-        </button>
+        <h3>Sign In</h3>
+        <button>Log In With Google</button>
+        {/* onClick={this.props.handleClick} */}
       </div>
     );
   }
 }
 
-export default Example
+export default Example;
