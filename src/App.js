@@ -5,6 +5,7 @@ import NavBar from './NavBar'
 import UserCards from './UserCards'
 import NewContact from './NewContact'
 
+
 class App extends Component {
   constructor() {
     super()
@@ -12,24 +13,34 @@ class App extends Component {
       user: null,
       userCards: [{id: 123, fullName: 'BG'}, {id:420, fullName:'RB'}]
     }
-}
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.setState({ user });
+    });
+  }
 
   render() {
     const { user } = this.state;
-    // if (user) {};
+    if (user) {
+      return (
+        <div>
+          <NavBar />
+          <UserCards userCards={this.state.userCards} />
+          <NewContact />
+        </div>
+      )
+    }
     return (
       <div>
-        <NavBar /* will need username and logout */ />
-        <UserCards userCards={this.state.userCards} />
-        <NewContact />
         <section className="sign-in-page">
-          <h3>Remembr</h3>
           <article>
             <SignIn />
           </article>
         </section>
       </div>
-    );
+    )
   }
 }
 
