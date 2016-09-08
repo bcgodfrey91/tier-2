@@ -3,7 +3,7 @@ import firebase from './firebase'
 import SignIn from './SignIn'
 import NavBar from './NavBar'
 import UserCards from './UserCards'
-
+import NewContact from './NewContact'
 
 class App extends Component {
   constructor() {
@@ -21,6 +21,7 @@ class App extends Component {
       <div>
         <NavBar /* will need username and logout */ />
         <UserCards userCards={this.state.userCards} />
+        <NewContact />
         <section className="sign-in-page">
           <h3>Remembr</h3>
           <article>
