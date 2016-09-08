@@ -1,12 +1,16 @@
 import React, {Component} from 'react';
 import firebase from './firebase'
 import SignIn from './SignIn'
+import NavBar from './NavBar'
+import UserCards from './UserCards'
+import NewContact from './NewContact'
 
 class App extends Component {
   constructor() {
     super()
     this.state = {
-      user: null;
+      user: null,
+      userCards: [{id: 123, fullName: 'BG'}, {id:420, fullName:'RB'}]
     }
 }
 
@@ -14,12 +18,17 @@ class App extends Component {
     const { user } = this.state;
     // if (user) {};
     return (
-      <section className="sign-in-page">
-        <h3>Remembr</h3>
-        <article>
-          <SignIn />
-        </article>
-      </section>
+      <div>
+        <NavBar /* will need username and logout */ />
+        <UserCards userCards={this.state.userCards} />
+        <NewContact />
+        <section className="sign-in-page">
+          <h3>Remembr</h3>
+          <article>
+            <SignIn />
+          </article>
+        </section>
+      </div>
     );
   }
 }
