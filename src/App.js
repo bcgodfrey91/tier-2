@@ -4,12 +4,13 @@ import SignIn from './SignIn'
 import NavBar from './NavBar'
 import UserCards from './UserCards'
 
+
 class App extends Component {
   constructor() {
     super()
     this.state = {
       user: null,
-      userCards: []
+      userCards: [{id: 123, fullName: 'BG'}, {id:420, fullName:'RB'}]
     }
 }
 
