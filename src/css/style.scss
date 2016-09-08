@@ -1,5 +1,13 @@
+@import 'reset';
+// @import 'homeScreen';
+// @import 'allContactsPage';
+// @import 'contactCard';
+// @import 'addContact';
+// @import 'contactPage';
+@import 'variables';
+
 body {
-  background-color: blue;
+  background-color: $primary-dark-color;
 }
 
 .hidden {
