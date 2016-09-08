@@ -1,5 +1,6 @@
 import React, {Component} from 'react';
-import UserCard from './UserCard'
+import UserCard from './UserCard';
+// import firebase from './firebase'
 
 class UserCards extends Component {
   loadCards() {
@@ -12,6 +13,16 @@ class UserCards extends Component {
     })
   }
 
+  // get allCardsReference() {
+  //     return firebase.database().ref(`all-cards/${this.props.uid}`);
+  //   }
+  //
+  // componentDidMount() {
+  //   this.allCardsReference.on('value', (snapshot) => {
+  //     console.log('it pushed')
+  //   })
+  // }
+
   render(){
     return(
       <div className="user-cards">
@@ -22,3 +33,6 @@ class UserCards extends Component {
 }
 
 export default UserCards
+
+
+// nameStorage = firebase.storage().ref()
