@@ -1,8 +1,11 @@
 import React, {Component} from 'react';
+import firebase from './firebase';
+
 
 class NewContact extends Component {
   constructor() {
     super()
+
     this.state = {
       id: Date.now(),
       fullName: '',
@@ -27,7 +30,6 @@ class NewContact extends Component {
   handleFullNameChange(event) {
     const fullName = event.target.value
     this.setState({fullName: fullName})
-    console.log(this.state.fullName)
   }
 
   handleCompanyChange(event) {
@@ -65,51 +67,62 @@ class NewContact extends Component {
     this.setState({notes: notes})
   }
 
+  addNewContact(e){
+    e.preventDefault();
+
+    const { baseContactReference } = this.props;
+    const { fullName } = this.state;
+
+    baseContactReference.push(fullName);
+
+    this.setState({ title: '' });
+  }
 
   render() {
     return (
-      <div className='new-contact'>
-      <h1>Full Name: </h1>
-        <input
-          className='full-name'
-          onChange={this.handleFullNameChange}
-        />
-      <h1>Company: </h1>
-        <input
-          className='company-name'
-          onChange={this.handleCompanyChange}
-        />
-      <h1>E-mail: </h1>
-        <input
-          className='email'
-          onChange={this.handleEmailChange}
-        />
-      <h1>Phone: </h1>
-        <input
-          className='primary-phone'
-          onChange={this.handlePhoneChange}
-        />
-      <h1>LinkedIn: </h1>
-        <input
-          className='linkedin'
-          onChange={this.handleLinkedinChange}
-        />
-      <h1>Twitter: </h1>
-        <input
-          className='twitter'
-          onChange={this.handleTwitterChange}
-        />
-      <h1>URL: </h1>
-        <input
-          className='url'
-          onChange={this.handleUrlChange}
-        />
-      <h1>Notes: </h1>
-        <textarea
-          className='notes'
-          onChange={this.handleNotesChange}
-        />
-      </div>
+      <form className='new-contact' onSubmit={this.addNewContact.bind(this)}>
+        <h1>Full Name: </h1>
+          <input
+            className='full-name'
+            onChange={this.handleFullNameChange}
+          />
+        <h1>Company: </h1>
+          <input
+            className='company-name'
+            onChange={this.handleCompanyChange}
+          />
+        <h1>E-mail: </h1>
+          <input
+            className='email'
+            onChange={this.handleEmailChange}
+          />
+        <h1>Phone: </h1>
+          <input
+            className='primary-phone'
+            onChange={this.handlePhoneChange}
+          />
+        <h1>LinkedIn: </h1>
+          <input
+            className='linkedin'
+            onChange={this.handleLinkedinChange}
+          />
+        <h1>Twitter: </h1>
+          <input
+            className='twitter'
+            onChange={this.handleTwitterChange}
+          />
+        <h1>URL: </h1>
+          <input
+            className='url'
+            onChange={this.handleUrlChange}
+          />
+        <h1>Notes: </h1>
+          <textarea
+            className='notes'
+            onChange={this.handleNotesChange}
+          />
+        <input type="submit" value="new contact" />
+      </form>
     );
   }
 

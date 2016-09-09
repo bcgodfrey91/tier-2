@@ -15,6 +15,10 @@ class App extends Component {
     }
   }
 
+  get baseContactReference() {
+    return firebase.database().ref(`baseContact/${this.props.uid}/`);
+  }
+
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user });
@@ -28,7 +32,7 @@ class App extends Component {
         <div>
           <NavBar />
           <UserCards userCards={this.state.userCards} />
-          <NewContact />
+          <NewContact baseContactReference={this.baseContactReference}/>
         </div>
       )
     }
