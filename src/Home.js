@@ -6,7 +6,7 @@ import UserCards from './UserCards'
 import NewContact from './NewContact'
 
 
-class App extends Component {
+class Home extends Component {
   constructor() {
     super()
     this.state = {
@@ -26,26 +26,24 @@ class App extends Component {
   }
 
   render() {
-    const { user } = this.state;
-    if (user) {
+    // const { user } = this.state;
+    // if (user) {
       return (
         <div>
           <NavBar />
           <UserCards userCards={this.state.userCards} />
-          {/* <NewContact baseContactReference={this.baseContactReference}/> */}
         </div>
       )
-    }
-    return (
-      <div>
-        <section className="sign-in-page">
+    // return (
+    //   <div>
+        {/* <section className="sign-in-page">
           <article>
             <SignIn />
-          </article>
-        </section>
-      </div>
-    )
-  }
+          </article> */}
+        {/* </section> */}
+      // </div>
+  //   )
+  // }
 }
-
-export default App;
+}
+export default Home;
