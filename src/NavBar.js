@@ -1,4 +1,6 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router'
+import {App} from './App';
 
 class NavBar extends Component {
   render(){
@@ -7,7 +9,7 @@ class NavBar extends Component {
         <button className="show-favorites">Fav</button>
         <button className="user-name-drop">User Name</button>
         <button className="logout hidden"></button>
-        <button className="add-contact">+</button>
+        <Link to="/addcontact"><button className="add-contact">+</button></Link>
       </div>
     )
   }

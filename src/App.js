@@ -32,7 +32,7 @@ class App extends Component {
         <div>
           <NavBar />
           <UserCards userCards={this.state.userCards} />
-          <NewContact baseContactReference={this.baseContactReference}/>
+          {/* <NewContact baseContactReference={this.baseContactReference}/> */}
         </div>
       )
     }
