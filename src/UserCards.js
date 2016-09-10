@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Link } from 'react-router'
 import UserCard from './UserCard';
 import firebase from './firebase'
 

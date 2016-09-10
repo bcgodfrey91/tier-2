@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
 import { Link } from 'react-router'
-import {App} from './App';
+import {Home} from './Home';
 
 class NavBar extends Component {
   render(){
