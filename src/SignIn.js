@@ -26,6 +26,7 @@ class SignIn extends Component {
   render() {
     const { user } = this.state;
     if (user) {
+      // console.log(firebase.auth().currentUser.uid)
       return(
         <section className='signed-in'>
           <div>
