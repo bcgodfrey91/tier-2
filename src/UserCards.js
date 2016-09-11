@@ -2,21 +2,49 @@ import React, {Component} from 'react';
 import { Link } from 'react-router'
 import UserCard from './UserCard';
 import firebase from './firebase'
+import NewContact from './NewContact'
 
 class UserCards extends Component {
+  constructor() {
+    super()
+    this.state = {
+      contacts: []
+    }
+    this.contactsArray = []
+  }
+
+  get baseContactReference() {
+    return firebase.database().ref(`baseContact/${firebase.auth().currentUser.uid}/`);
+  }
+
+  componentDidMount() {
+    this.baseContactReference.on('child_added', (snapshot) => {
+      const newContactCard = snapshot.val()
+      var contactArr = {fullName: newContactCard.fullName, company:newContactCard.company, id: newContactCard.id}
+
+      this.contactsArray.push(contactArr)
+      this.setState({ contacts: this.contactsArray })
+
+    })
+  }
+
+  componentWillUnmount() {
+    this.baseContactReference.off()
+  }
+
   loadCards() {
-    return this.props.userCards.map(card => {
+    return this.state.contacts.map(contact => {
       return(
-        <div key={card.id}>
-          <UserCard card={card}/>
+        <div key={contact.id}>
+          <UserCard contact={contact}/>
         </div>
       )
     })
   }
 
-  get baseContactReference() {
-    return firebase.database().ref(`baseContact/${this.props.uid}/`);
-  }
+
+
+
   //
   // get allContactInfo() {
   //   return firebase.database().ref(`contactInfo/${this.props.uid}/`);

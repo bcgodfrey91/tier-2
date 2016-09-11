@@ -11,7 +11,8 @@ class Home extends Component {
     super()
     this.state = {
       userName: firebase.auth().currentUser.displayName,
-      userCards: [{id: 123, fullName: 'BG'}, {id:420, fullName:'RB'}]
+      userCards: []
+      // userCards: [{id: 123, fullName: 'BG'}, {id:420, fullName:'RB'}]
     }
   }
 
