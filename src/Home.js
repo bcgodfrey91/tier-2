@@ -15,9 +15,6 @@ class Home extends Component {
     }
   }
 
-  get baseContactReference() {
-    return firebase.database().ref(`baseContact/${this.props.uid}/`);
-  }
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
@@ -28,6 +25,7 @@ class Home extends Component {
   render() {
     // const { user } = this.state;
     // if (user) {
+
       return (
         <div>
           <NavBar />

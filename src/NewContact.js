@@ -1,12 +1,15 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
 
+// firebase.auth().currentUser.uid
+
 
 class NewContact extends Component {
   constructor() {
     super()
 
     this.state = {
+      uid: firebase.auth().currentUser.uid,
       id: Date.now(),
       fullName: '',
       company: '',
@@ -25,6 +28,21 @@ class NewContact extends Component {
     this.handleTwitterChange = this.handleTwitterChange.bind(this)
     this.handleUrlChange = this.handleUrlChange.bind(this)
     this.handleNotesChange = this.handleNotesChange.bind(this)
+  }
+
+  componentDidMount() {
+    firebase.auth().onAuthStateChanged((user) => {
+      this.setState({ user });
+      // Router.browserHistory.push('/home')
+    });
+  }
+
+  get baseContactReference() {
+    return firebase.database().ref(`baseContact/${this.state.uid}/`);
+  }
+
+  get contactReference() {
+    return firebase.database().ref(`contactInfo/${this.state.uid}/`);
   }
 
   handleFullNameChange(event) {
@@ -72,10 +90,22 @@ class NewContact extends Component {
 
     const { baseContactReference } = this.props;
     const { fullName } = this.state;
+    const { contactInfo } = this.props;
+    const { company } = this.state;
+    const { id } = this.state;
+    const { email } = this.state;
+    const { phone } = this.state;
+    const { linkedin } = this.state;
+    const { twitter } = this.state;
+    const { url } = this.state;
+    const { notes } = this.state;
 
-    baseContactReference.push(fullName);
 
-    this.setState({ title: '' });
+    this.baseContactReference.push({fullName, company, id});
+    this.setState({fullName: '', company: '', id: Date.now()})
+
+    // this.contactInfo.push({email, phone, linkedin, twitter, url, notes});
+    // this.setState({email: '', phone: '', linkedin: '', twitter: '', url: '', notes: '', id: Date.now()})
   }
 
   render() {
