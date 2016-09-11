@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
-
-// firebase.auth().currentUser.uid
+import { Link } from 'react-router'
 
 
 class NewContact extends Component {
@@ -13,6 +12,7 @@ class NewContact extends Component {
       id: Date.now(),
       fullName: '',
       company: '',
+      followUp: 0,
       email: '',
       phone: '',
       linkedin:'',
@@ -30,12 +30,6 @@ class NewContact extends Component {
     this.handleNotesChange = this.handleNotesChange.bind(this)
   }
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      this.setState({ user });
-      // Router.browserHistory.push('/home')
-    });
-  }
 
   get baseContactReference() {
     return firebase.database().ref(`baseContact/${this.state.uid}/`);
@@ -93,6 +87,7 @@ class NewContact extends Component {
     const { contactInfo } = this.props;
     const { company } = this.state;
     const { id } = this.state;
+    const { followUp } = this.state;
     const { email } = this.state;
     const { phone } = this.state;
     const { linkedin } = this.state;
@@ -101,11 +96,10 @@ class NewContact extends Component {
     const { notes } = this.state;
 
 
-    this.baseContactReference.push({fullName, company, id});
-    this.setState({fullName: '', company: '', id: Date.now()})
+    this.baseContactReference.push({ fullName, company, followUp, id });
+    this.contactReference.push({ email, phone, linkedin, twitter, url, notes, id });
+    this.setState({ fullName: '', company: '', id: Date.now() })
 
-    // this.contactInfo.push({email, phone, linkedin, twitter, url, notes});
-    // this.setState({email: '', phone: '', linkedin: '', twitter: '', url: '', notes: '', id: Date.now()})
   }
 
   render() {

@@ -10,21 +10,21 @@ class Home extends Component {
   constructor() {
     super()
     this.state = {
-      user: null,
+      userName: firebase.auth().currentUser.displayName,
       userCards: [{id: 123, fullName: 'BG'}, {id:420, fullName:'RB'}]
     }
   }
 
-
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      this.setState({ user });
-    });
-  }
+  // componentDidMount() {
+  //   firebase.auth().onAuthStateChanged((user) => {
+  //     this.setState({ user });
+  //   });
+  // }
 
   render() {
     // const { user } = this.state;
     // if (user) {
+    console.log(this.state.username)
 
       return (
         <div>

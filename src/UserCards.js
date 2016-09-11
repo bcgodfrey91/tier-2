@@ -14,9 +14,9 @@ class UserCards extends Component {
     })
   }
 
-  // get baseContactReference() {
-  //   return firebase.database().ref(`baseContact/${this.props.uid}/`);
-  // }
+  get baseContactReference() {
+    return firebase.database().ref(`baseContact/${this.props.uid}/`);
+  }
   //
   // get allContactInfo() {
   //   return firebase.database().ref(`contactInfo/${this.props.uid}/`);
@@ -25,22 +25,6 @@ class UserCards extends Component {
   // get allContactNotes() {
   //   return firebase.database().ref(`contactNotes/${this.props.uid}/`)
   // }
-
-  // '/baseContact/' + uid + '/' + uniqueKey + '/' + FullName
-  //                                               + Company
-  //                                               + Picture
-  //                                               + Date.now()
-  //                                               + FollowUp Status
-
-  // '/contactInfo/' + uid + '/' + uniqueKey +  '/' + Phone
-  //                                                + Email
-  //                                                + LinkedIn
-  //                                                + Twitter
-  //                                                + URL
-
-  // '/contactNotes/' + uid + '/' + uniqueKey + '/' + Notes
-
-
 
   // componentDidMount() {
   //   this.allCardsReference.on('value', (snapshot) => {
