@@ -14,9 +14,9 @@ class UserCards extends Component {
     })
   }
 
-  // get baseContactReference() {
-  //   return firebase.database().ref(`baseContact/${this.props.uid}/`);
-  // }
+  get baseContactReference() {
+    return firebase.database().ref(`baseContact/${this.props.uid}/`);
+  }
   //
   // get allContactInfo() {
   //   return firebase.database().ref(`contactInfo/${this.props.uid}/`);

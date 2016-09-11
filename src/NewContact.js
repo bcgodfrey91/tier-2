@@ -12,7 +12,7 @@ class NewContact extends Component {
       id: Date.now(),
       fullName: '',
       company: '',
-      favorite: '',
+      followUp: 0,
       email: '',
       phone: '',
       linkedin:'',
@@ -87,6 +87,7 @@ class NewContact extends Component {
     const { contactInfo } = this.props;
     const { company } = this.state;
     const { id } = this.state;
+    const { followUp } = this.state;
     const { email } = this.state;
     const { phone } = this.state;
     const { linkedin } = this.state;
@@ -95,9 +96,10 @@ class NewContact extends Component {
     const { notes } = this.state;
 
 
-    this.baseContactReference.push({fullName, company, id});
-    this.contactReference.push({email, phone, linkedin, twitter, url, notes});
-    this.setState({fullName: '', company: '', id: Date.now()})
+    this.baseContactReference.push({ fullName, company, followUp, id });
+    this.contactReference.push({ email, phone, linkedin, twitter, url, notes, id });
+    this.setState({ fullName: '', company: '', id: Date.now() })
+
   }
 
   render() {
