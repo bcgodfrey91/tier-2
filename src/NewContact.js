@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
-
-// firebase.auth().currentUser.uid
+import { Link } from 'react-router'
 
 
 class NewContact extends Component {
@@ -13,6 +12,7 @@ class NewContact extends Component {
       id: Date.now(),
       fullName: '',
       company: '',
+      favorite: '',
       email: '',
       phone: '',
       linkedin:'',
@@ -30,12 +30,6 @@ class NewContact extends Component {
     this.handleNotesChange = this.handleNotesChange.bind(this)
   }
 
-  componentDidMount() {
-    firebase.auth().onAuthStateChanged((user) => {
-      this.setState({ user });
-      // Router.browserHistory.push('/home')
-    });
-  }
 
   get baseContactReference() {
     return firebase.database().ref(`baseContact/${this.state.uid}/`);
@@ -102,10 +96,8 @@ class NewContact extends Component {
 
 
     this.baseContactReference.push({fullName, company, id});
+    this.contactReference.push({email, phone, linkedin, twitter, url, notes});
     this.setState({fullName: '', company: '', id: Date.now()})
-
-    // this.contactInfo.push({email, phone, linkedin, twitter, url, notes});
-    // this.setState({email: '', phone: '', linkedin: '', twitter: '', url: '', notes: '', id: Date.now()})
   }
 
   render() {

@@ -26,22 +26,6 @@ class UserCards extends Component {
   //   return firebase.database().ref(`contactNotes/${this.props.uid}/`)
   // }
 
-  // '/baseContact/' + uid + '/' + uniqueKey + '/' + FullName
-  //                                               + Company
-  //                                               + Picture
-  //                                               + Date.now()
-  //                                               + FollowUp Status
-
-  // '/contactInfo/' + uid + '/' + uniqueKey +  '/' + Phone
-  //                                                + Email
-  //                                                + LinkedIn
-  //                                                + Twitter
-  //                                                + URL
-
-  // '/contactNotes/' + uid + '/' + uniqueKey + '/' + Notes
-
-
-
   // componentDidMount() {
   //   this.allCardsReference.on('value', (snapshot) => {
   //     console.log('it pushed')
