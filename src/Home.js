@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import firebase from './firebase'
 import SignIn from './SignIn'
 import NavBar from './NavBar'
@@ -12,24 +13,15 @@ class Home extends Component {
     this.state = {
       userName: firebase.auth().currentUser.displayName,
       userCards: []
-      // userCards: [{id: 123, fullName: 'BG'}, {id:420, fullName:'RB'}]
     }
   }
 
-  // componentDidMount() {
-  //   firebase.auth().onAuthStateChanged((user) => {
-  //     this.setState({ user });
-  //   });
-  // }
 
   render() {
     // const { user } = this.state;
     // if (user) {
-    console.log(this.state.username)
-
       return (
         <div>
-          <NavBar />
           <UserCards userCards={this.state.userCards} />
         </div>
       )

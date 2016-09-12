@@ -15,25 +15,11 @@ class SignIn extends Component {
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user });
-      // Router.browserHistory.push('/home')
+      browserHistory.push('/home')
     });
   }
 
-  // pushBrowserHistory() {
-  //   Router.browserHistory.push('/home')
-  // }
-
   render() {
-    const { user } = this.state;
-    if (user) {
-      return(
-        <section className='signed-in'>
-          <div>
-            <Link to="/home"><button></button></Link>
-          </div>
-        </section>
-      )
-    }
     return (
       <div className='SignIn'>
         <button onClick={() => firebase.auth().signInWithPopup(provider)}>
