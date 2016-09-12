@@ -1,6 +1,6 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router'
-import {Home} from './Home';
+import {Link, Router, IndexRoute, Route, browserHistory } from 'react-router';
+import { Home } from './Home';
 import firebase from './firebase'
 
 class NavBar extends Component {

@@ -7,13 +7,16 @@ import SignIn from './SignIn'
 import Home from './Home';
 import NewContact from './NewContact';
 import AllInfoCard from './AllInfoCard';
+import Main from './Main';
 require('./css/style');
 
 
 ReactDOM.render(
   <Router history={browserHistory} path="remembr">
     <Route path="/" component={SignIn}></Route>
-    <Route path="/home" component={Home}></Route>
+    <Route path="/" component={Main} path="home">
+      <IndexRoute component={Home} />
+    </Route>
     <Route path="/addcontact" component={NewContact}></Route>
   </Router>,
   document.getElementById('root')

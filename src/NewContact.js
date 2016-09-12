@@ -1,7 +1,6 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
-import { Link } from 'react-router';
-import { ImportImage} from './ImportImage';
+import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 
 
 class NewContact extends Component {
@@ -45,10 +44,10 @@ class NewContact extends Component {
     return firebase.database().ref(`contactInfo/${this.state.uid}/`);
   }
 
-  get storageReference() {
-    return
-    firebase.storage().ref(`profileImage/${this.state.uid}`);
-  }
+  // get storageReference() {
+  //   return
+  //   firebase.storage().ref(`profileImage/${this.state.uid}`);
+  // }
 
   handleFullNameChange(event) {
     const fullName = event.target.value

@@ -1,5 +1,5 @@
 import React, {Component} from 'react';
-import { Link } from 'react-router'
+import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import UserCard from './UserCard';
 import firebase from './firebase'
 import NewContact from './NewContact'
