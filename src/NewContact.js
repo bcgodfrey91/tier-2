@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
+import { ImportImage} from './ImportImage';
 
 
 class NewContact extends Component {
@@ -18,8 +19,11 @@ class NewContact extends Component {
       linkedin:'',
       twitter:'',
       url:'',
-      notes:''
+      notes:'',
+      file: '',
+      previewImage: ''
     }
+
     this.handleFullNameChange = this.handleFullNameChange.bind(this)
     this.handleCompanyChange = this.handleCompanyChange.bind(this)
     this.handleEmailChange = this.handleEmailChange.bind(this)
@@ -28,6 +32,8 @@ class NewContact extends Component {
     this.handleTwitterChange = this.handleTwitterChange.bind(this)
     this.handleUrlChange = this.handleUrlChange.bind(this)
     this.handleNotesChange = this.handleNotesChange.bind(this)
+    this.addNewContact = this.addNewContact.bind(this)
+    this.handleImageChange = this.handleImageChange.bind(this)
   }
 
 
@@ -37,6 +43,11 @@ class NewContact extends Component {
 
   get contactReference() {
     return firebase.database().ref(`contactInfo/${this.state.uid}/`);
+  }
+
+  get storageReference() {
+    return
+    firebase.storage().ref(`profileImage/${this.state.uid}`);
   }
 
   handleFullNameChange(event) {
@@ -79,6 +90,22 @@ class NewContact extends Component {
     this.setState({notes: notes})
   }
 
+  handleImageChange(e) {
+    e.preventDefault();
+
+    let reader = new FileReader();
+    let file =  e.target.files[0];
+
+    render.onloadend = () => {
+      this.setState({
+        file: file,
+        previewImage: reader.result
+      });
+    }
+
+    reader.readAsDataURL(file);
+  }
+
   addNewContact(e){
     e.preventDefault();
 
@@ -94,17 +121,25 @@ class NewContact extends Component {
     const { twitter } = this.state;
     const { url } = this.state;
     const { notes } = this.state;
+    const { file } = this.state;
+    const { previewImage } = this.state;
 
 
-    this.baseContactReference.push({ fullName, company, followUp, id });
+    this.baseContactReference.push({ file, fullName, company, followUp, id });
     this.contactReference.push({ email, phone, linkedin, twitter, url, notes, id });
+    // this.storageReference.push({file}).then(function(snapshot) {
+    //   console.log('Uploaded');
+    // });
     this.setState({ fullName: '', company: '', id: Date.now() })
 
   }
 
+
+
   render() {
     return (
-      <form className='new-contact' onSubmit={this.addNewContact.bind(this)}>
+      <form className='new-contact' onSubmit={this.addNewContact}>
+        <input className="fileInput" type="file" onChange={this.handleImageChange} />
         <h1>Full Name: </h1>
           <input
             className='full-name'
