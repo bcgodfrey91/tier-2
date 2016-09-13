@@ -1,17 +1,19 @@
 import React, {Component} from 'react';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import UserCard from './UserCard';
-import firebase from './firebase'
-import NewContact from './NewContact'
+import firebase from './firebase';
+import NewContact from './NewContact';
+import md5 from 'md5';
 
 class UserCards extends Component {
   constructor() {
     super()
     this.state = {
-      contacts: []
+      contacts: [],
     }
     this.contactsArray = []
   }
+
 
   get baseContactReference() {
     return firebase.database().ref(`baseContact/${firebase.auth().currentUser.uid}/`);
@@ -43,23 +45,6 @@ class UserCards extends Component {
   }
 
 
-
-
-  //
-  // get allContactInfo() {
-  //   return firebase.database().ref(`contactInfo/${this.props.uid}/`);
-  // }
-  //
-  // get allContactNotes() {
-  //   return firebase.database().ref(`contactNotes/${this.props.uid}/`)
-  // }
-
-  // componentDidMount() {
-  //   this.allCardsReference.on('value', (snapshot) => {
-  //     console.log('it pushed')
-  //   })
-  // }
-
   render(){
     return(
       <div className="user-cards">
@@ -70,6 +55,3 @@ class UserCards extends Component {
 }
 
 export default UserCards
-
-
-// nameStorage = firebase.storage().ref()

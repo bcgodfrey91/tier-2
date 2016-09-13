@@ -18,23 +18,11 @@ class Home extends Component {
 
 
   render() {
-    // const { user } = this.state;
-    // if (user) {
       return (
         <div>
           <UserCards userCards={this.state.userCards} />
         </div>
       )
-    // return (
-    //   <div>
-        {/* <section className="sign-in-page">
-          <article>
-            <SignIn />
-          </article> */}
-        {/* </section> */}
-      // </div>
-  //   )
-  // }
-}
+    }
 }
 export default Home;

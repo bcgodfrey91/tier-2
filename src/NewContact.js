@@ -19,8 +19,6 @@ class NewContact extends Component {
       twitter:'',
       url:'',
       notes:'',
-      file: '',
-      previewImage: ''
     }
 
     this.handleFullNameChange = this.handleFullNameChange.bind(this)
@@ -32,22 +30,17 @@ class NewContact extends Component {
     this.handleUrlChange = this.handleUrlChange.bind(this)
     this.handleNotesChange = this.handleNotesChange.bind(this)
     this.addNewContact = this.addNewContact.bind(this)
-    this.handleImageChange = this.handleImageChange.bind(this)
   }
 
 
   get baseContactReference() {
-    return firebase.database().ref(`baseContact/${this.state.uid}/`);
+    return firebase.database().ref(`baseContact/${this.state.uid}/${this.state.id}`);
   }
 
   get contactReference() {
-    return firebase.database().ref(`contactInfo/${this.state.uid}/`);
+    return firebase.database().ref(`contactInfo/${this.state.uid}/${this.state.id}`);
   }
 
-  // get storageReference() {
-  //   return
-  //   firebase.storage().ref(`profileImage/${this.state.uid}`);
-  // }
 
   handleFullNameChange(event) {
     const fullName = event.target.value
@@ -89,22 +82,6 @@ class NewContact extends Component {
     this.setState({notes: notes})
   }
 
-  handleImageChange(e) {
-    e.preventDefault();
-
-    let reader = new FileReader();
-    let file =  e.target.files[0];
-
-    render.onloadend = () => {
-      this.setState({
-        file: file,
-        previewImage: reader.result
-      });
-    }
-
-    reader.readAsDataURL(file);
-  }
-
   addNewContact(e){
     e.preventDefault();
 
@@ -120,15 +97,10 @@ class NewContact extends Component {
     const { twitter } = this.state;
     const { url } = this.state;
     const { notes } = this.state;
-    const { file } = this.state;
-    const { previewImage } = this.state;
 
 
-    this.baseContactReference.push({ file, fullName, company, followUp, id });
-    this.contactReference.push({ email, phone, linkedin, twitter, url, notes, id });
-    // this.storageReference.push({file}).then(function(snapshot) {
-    //   console.log('Uploaded');
-    // });
+    this.baseContactReference.set({ fullName, company, followUp, id });
+    this.contactReference.set({ email, phone, linkedin, twitter, url, notes});
     this.setState({ fullName: '', company: '', id: Date.now() })
 
   }
@@ -138,7 +110,6 @@ class NewContact extends Component {
   render() {
     return (
       <form className='new-contact' onSubmit={this.addNewContact}>
-        <input className="fileInput" type="file" onChange={this.handleImageChange} />
         <h1>Full Name: </h1>
           <input
             className='full-name'
