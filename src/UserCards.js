@@ -3,7 +3,7 @@ import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import UserCard from './UserCard';
 import firebase from './firebase';
 import NewContact from './NewContact';
-import md5 from 'md5';
+// import md5 from 'md5';
 
 class UserCards extends Component {
   constructor() {
