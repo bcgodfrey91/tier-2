@@ -1,16 +1,8 @@
 @import 'reset';
-// @import 'homeScreen';
-// @import 'allContactsPage';
-// @import 'contactCard';
-// @import 'addContact';
-// @import 'contactPage';
 @import 'navBar';
 @import 'signin';
 @import 'variables';
-
-
-
-// body {
-//   background-color: $primary-dark-color;
-//   color: #FFF;
-// }
+@import 'userCard';
+@import 'newContact';
+@import 'home';
+@import 'allInfoCard';

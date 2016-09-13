@@ -19,9 +19,9 @@ class Home extends Component {
 
   render() {
       return (
-        <div>
+        <section className="contactsScreen">
           <UserCards userCards={this.state.userCards} />
-        </div>
+        </section>
       )
     }
 }
