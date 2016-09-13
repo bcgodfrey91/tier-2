@@ -21,10 +21,17 @@ class SignIn extends Component {
 
   render() {
     return (
-      <div className='SignIn'>
-        <button onClick={() => firebase.auth().signInWithPopup(provider)}>
-        Log In With Google</button>
-      </div>
+      <section className='SignIn'>
+        <section className="logoContainer">
+          <img className="logo" src="./src/css/images/main-logo.svg" alt="Remembr logo"/>
+          <h1 className="logoName">Remembr</h1>
+        </section>
+        <section className="signInContainer">
+          <h2 className="signIn">Sign In With:</h2>
+          <button id="googleButton" onClick={() => firebase.auth().signInWithPopup(provider)}>
+          Google</button>
+        </section>
+      </section>
     );
   }
 }

@@ -16,7 +16,7 @@ ReactDOM.render(
     <Route path="/" component={SignIn}></Route>
     <Route path="/" component={Main} path="home">
       <IndexRoute component={Home} />
-      <Route path="/usercontactinfo" component={AllInfoCard} />
+      <Route path="/usercontactinfo/:id" component={AllInfoCard} />
     </Route>
     <Route path="/addcontact" component={NewContact}></Route>
   </Router>,

@@ -9,7 +9,9 @@ class UserCards extends Component {
   constructor() {
     super()
     this.state = {
-      contacts: [],
+      contacts:     [],
+      baseIdRef:    null,
+      contactIdRef: null
     }
     this.contactsArray = []
   }
@@ -42,6 +44,11 @@ class UserCards extends Component {
         </div>
       )
     })
+  }
+
+  get setIdOnClick() {
+    // const Idref = this.state.contact.id
+    console.log(this.state.contact.id)
   }
 
 

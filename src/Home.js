@@ -11,7 +11,7 @@ class Home extends Component {
   constructor() {
     super()
     this.state = {
-      userName: firebase.auth().currentUser.displayName,
+      userName:  firebase.auth().currentUser.displayName,
       userCards: []
     }
   }
