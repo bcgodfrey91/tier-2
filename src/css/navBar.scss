@@ -1,0 +1,7 @@
+@import 'variables';
+
+.nav-bar {
+  background-color: $primary-dark-color;
+  color: $secondary-font-color;
+  display: flex;
+}

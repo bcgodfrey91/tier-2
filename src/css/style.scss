@@ -4,13 +4,13 @@
 // @import 'contactCard';
 // @import 'addContact';
 // @import 'contactPage';
+@import 'navBar';
+@import 'signin';
 @import 'variables';
 
-body {
-  background-color: $primary-dark-color;
-  color: #FFF;
-}
 
-.hidden {
-  display: none;
-}
+
+// body {
+//   background-color: $primary-dark-color;
+//   color: #FFF;
+// }

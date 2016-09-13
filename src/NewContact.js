@@ -8,28 +8,28 @@ class NewContact extends Component {
     super()
 
     this.state = {
-      uid: firebase.auth().currentUser.uid,
-      id: Date.now(),
+      uid:      firebase.auth().currentUser.uid,
+      id:       Date.now(),
       fullName: '',
-      company: '',
-      followUp: 0,
-      email: '',
-      phone: '',
-      linkedin:'',
-      twitter:'',
-      url:'',
-      notes:'',
+      company:  '',
+      followUp:  0,
+      email:    '',
+      phone:    '',
+      linkedin: '',
+      twitter:  '',
+      url:      '',
+      notes:    '',
     }
 
-    this.handleFullNameChange = this.handleFullNameChange.bind(this)
-    this.handleCompanyChange = this.handleCompanyChange.bind(this)
-    this.handleEmailChange = this.handleEmailChange.bind(this)
-    this.handlePhoneChange = this.handlePhoneChange.bind(this)
-    this.handleLinkedinChange = this.handleLinkedinChange.bind(this)
-    this.handleTwitterChange = this.handleTwitterChange.bind(this)
-    this.handleUrlChange = this.handleUrlChange.bind(this)
-    this.handleNotesChange = this.handleNotesChange.bind(this)
-    this.addNewContact = this.addNewContact.bind(this)
+    this.handleFullNameChange = this.handleFullNameChange .bind(this)
+    this.handleCompanyChange  = this.handleCompanyChange  .bind(this)
+    this.handleEmailChange    = this.handleEmailChange    .bind(this)
+    this.handlePhoneChange    = this.handlePhoneChange    .bind(this)
+    this.handleLinkedinChange = this.handleLinkedinChange .bind(this)
+    this.handleTwitterChange  = this.handleTwitterChange  .bind(this)
+    this.handleUrlChange      = this.handleUrlChange      .bind(this)
+    this.handleNotesChange    = this.handleNotesChange    .bind(this)
+    this.addNewContact        = this.addNewContact        .bind(this)
   }
 
 
@@ -86,17 +86,17 @@ class NewContact extends Component {
     e.preventDefault();
 
     const { baseContactReference } = this.props;
-    const { fullName } = this.state;
-    const { contactInfo } = this.props;
-    const { company } = this.state;
-    const { id } = this.state;
-    const { followUp } = this.state;
-    const { email } = this.state;
-    const { phone } = this.state;
-    const { linkedin } = this.state;
-    const { twitter } = this.state;
-    const { url } = this.state;
-    const { notes } = this.state;
+    const { fullName }             = this.state;
+    const { contactInfo }          = this.props;
+    const { company }              = this.state;
+    const { id }                   = this.state;
+    const { followUp }             = this.state;
+    const { email }                = this.state;
+    const { phone }                = this.state;
+    const { linkedin }             = this.state;
+    const { twitter }              = this.state;
+    const { url }                  = this.state;
+    const { notes }                = this.state;
 
 
     this.baseContactReference.set({ fullName, company, followUp, id });

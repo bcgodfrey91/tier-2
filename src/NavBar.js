@@ -6,12 +6,12 @@ import firebase from './firebase'
 class NavBar extends Component {
   render(){
     return(
-      <div className="nav-bar">
+      <section className="nav-bar">
         <button className="show-favorites">Fav</button>
         <button className="user-name-drop">{firebase.auth().currentUser.displayName}</button>
         <button className="logout hidden"></button>
         <Link to="/addcontact"><button className="add-contact">+</button></Link>
-      </div>
+      </section>
     )
   }
 }

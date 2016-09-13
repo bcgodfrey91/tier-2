@@ -6,10 +6,11 @@ import { Link } from 'react-router'
 
 class UserCard extends Component {
 
+
   render(){
     return(
       <div className="user-card" id={this.props.contact.id}>
-        <Link to="usercontactinfo"><button></button>
+        <Link to={`usercontactinfo/${this.props.contact.id}`}>Wow<button></button>
         <article>{moment(this.props.contact.id).format('L')}</article>
         <img />
         <h1>{this.props.contact.fullName}</h1>
