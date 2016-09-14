@@ -11,6 +11,7 @@ class AllInfoCard extends Component {
     this.state = {
       contact: {}
     };
+    this.handleFollowUps = this.handleFollowUps.bind(this);
   }
 
   get baseContactReference() {
@@ -20,11 +21,24 @@ class AllInfoCard extends Component {
     return firebase.database().ref(`contactInfo/${firebase.auth().currentUser.uid}/${this.props.routeParams.id}`);
   }
 
+  handleFollowUps(e) {
+    e.preventDefault();
+    const { fullName,
+            company,
+            id,
+            email
+          } = this.state;
+    if (this.state.contact.followUp === 0){
+      this.baseContactReference.set({ fullName, company, id, followUp: 1, email });
+    }else{
+      this.baseContactReference.set({ fullName, company, id, followUp: 0, email });
+    }
+  }
+
   componentDidMount() {
     const updateState = (snapshot) => {
       this.setState(Object.assign(this.state.contact, snapshot.val()));
     };
-
     this.baseContactReference.on('value', updateState);
     this.contactInfoReference.on('value', updateState);
   }
@@ -41,6 +55,7 @@ class AllInfoCard extends Component {
           </article>
           <article className='company'>
             <h2 className='baseTitle'>Company:</h2> <h2 className='companyName'>{this.state.contact.company}</h2>
+            <button onClick={this.handleFollowUps}></button>
           </article>
         </section>
         <article className='contactInformation'>

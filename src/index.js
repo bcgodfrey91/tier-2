@@ -8,6 +8,7 @@ import Home from './Home';
 import NewContact from './NewContact';
 import AllInfoCard from './AllInfoCard';
 import Main from './Main';
+import FollowUps from './FollowUps';
 require('./css/style');
 
 
@@ -16,6 +17,7 @@ ReactDOM.render(
     <Route path="/" component={SignIn}></Route>
     <Route path="/" component={Main} path="home">
       <IndexRoute component={Home} />
+      <Route path="/followUp" component={FollowUps} />
       <Route path="/usercontactinfo/:id" component={AllInfoCard} />
     </Route>
     <Route path="/addcontact" component={NewContact}></Route>
