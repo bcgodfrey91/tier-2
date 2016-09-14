@@ -8209,12 +8209,18 @@
 
 	var _AllInfoCard2 = _interopRequireDefault(_AllInfoCard);
 
+	var _Main = __webpack_require__(646);
+
+	var _Main2 = _interopRequireDefault(_Main);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
 
 	var firebase = __webpack_require__(533);
 	var provider = new firebase.auth.GoogleAuthProvider();
 
-	__webpack_require__(646);
+	__webpack_require__(647);
 
 	_reactDom2.default.render(_react2.default.createElement(
 	  _reactRouter.Router,
@@ -8222,8 +8228,9 @@
 	  _react2.default.createElement(_reactRouter.Route, { path: '/', component: _SignIn2.default }),
 	  _react2.default.createElement(
 	    _reactRouter.Route,
-	    { component: Main, path: 'home' },
-	    _react2.default.createElement(_reactRouter.Route, { path: '/', component: _Home2.default })
+	    _defineProperty({ path: '/', component: _Main2.default }, 'path', 'home'),
+	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/usercontactinfo/:id', component: _AllInfoCard2.default })
 	  ),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/addcontact', component: _NewContact2.default })
 	), document.getElementById('root'));
@@ -35123,32 +35130,34 @@
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var user = this.state.user;
-
-	      if (user) {
-	        return _react2.default.createElement(
-	          'section',
-	          { className: 'signed-in' },
-	          _react2.default.createElement(
-	            'div',
-	            null,
-	            _react2.default.createElement(
-	              _reactRouter.Link,
-	              { to: '/home' },
-	              _react2.default.createElement('button', null)
-	            )
-	          )
-	        );
-	      }
 	      return _react2.default.createElement(
-	        'div',
+	        'section',
 	        { className: 'SignIn' },
 	        _react2.default.createElement(
-	          'button',
-	          { onClick: function onClick() {
-	              return _firebase2.default.auth().signInWithPopup(provider);
-	            } },
-	          'Log In With Google'
+	          'section',
+	          { className: 'logoContainer' },
+	          _react2.default.createElement('img', { className: 'logo', src: './src/css/images/main-logo.svg', alt: 'Remembr logo' }),
+	          _react2.default.createElement(
+	            'h1',
+	            { className: 'logoName' },
+	            'Remembr'
+	          )
+	        ),
+	        _react2.default.createElement(
+	          'section',
+	          { className: 'signInContainer' },
+	          _react2.default.createElement(
+	            'h2',
+	            { className: 'signIn' },
+	            'Sign In With:'
+	          ),
+	          _react2.default.createElement(
+	            'button',
+	            { id: 'googleButton', onClick: function onClick() {
+	                return _firebase2.default.auth().signInWithPopup(provider);
+	              } },
+	            'Google'
+	          )
 	        )
 	      );
 	    }
@@ -35791,6 +35800,8 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
+	var _reactRouter = __webpack_require__(469);
+
 	var _firebase = __webpack_require__(533);
 
 	var _firebase2 = _interopRequireDefault(_firebase);
@@ -35837,23 +35848,11 @@
 	  _createClass(Home, [{
 	    key: 'render',
 	    value: function render() {
-	      // const { user } = this.state;
-	      // if (user) {
 	      return _react2.default.createElement(
-	        'div',
-	        null,
+	        'section',
+	        { className: 'contactsScreen' },
 	        _react2.default.createElement(_UserCards2.default, { userCards: this.state.userCards })
 	      );
-	      // return (
-	      //   <div>
-	      {/* <section className="sign-in-page">
-	         <article>
-	           <SignIn />
-	         </article> */}
-	      {} /* </section> */
-	      // </div>
-	      //   )
-	      // }
 	    }
 	  }]);
 
@@ -35907,7 +35906,7 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'div',
+	        'section',
 	        { className: 'nav-bar' },
 	        _react2.default.createElement(
 	          'button',
@@ -35923,11 +35922,7 @@
 	        _react2.default.createElement(
 	          _reactRouter.Link,
 	          { to: '/addcontact' },
-	          _react2.default.createElement(
-	            'button',
-	            { className: 'add-contact' },
-	            '+'
-	          )
+	          _react2.default.createElement('img', { className: 'plusContact', src: './src/css/images/plus-white.svg', alt: 'Add Contact' })
 	        )
 	      );
 	    }
@@ -35976,6 +35971,8 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+	// import md5 from 'md5';
+
 	var UserCards = function (_Component) {
 	  _inherits(UserCards, _Component);
 
@@ -35985,7 +35982,9 @@
 	    var _this = _possibleConstructorReturn(this, (UserCards.__proto__ || Object.getPrototypeOf(UserCards)).call(this));
 
 	    _this.state = {
-	      contacts: []
+	      contacts: [],
+	      baseIdRef: null,
+	      contactIdRef: null
 	    };
 	    _this.contactsArray = [];
 	    return _this;
@@ -36020,22 +36019,6 @@
 	        );
 	      });
 	    }
-
-	    //
-	    // get allContactInfo() {
-	    //   return firebase.database().ref(`contactInfo/${this.props.uid}/`);
-	    // }
-	    //
-	    // get allContactNotes() {
-	    //   return firebase.database().ref(`contactNotes/${this.props.uid}/`)
-	    // }
-
-	    // componentDidMount() {
-	    //   this.allCardsReference.on('value', (snapshot) => {
-	    //     console.log('it pushed')
-	    //   })
-	    // }
-
 	  }, {
 	    key: 'render',
 	    value: function render() {
@@ -36050,14 +36033,18 @@
 	    get: function get() {
 	      return _firebase2.default.database().ref('baseContact/' + _firebase2.default.auth().currentUser.uid + '/');
 	    }
+	  }, {
+	    key: 'setIdOnClick',
+	    get: function get() {
+	      // const Idref = this.state.contact.id
+	      console.log(this.state.contact.id);
+	    }
 	  }]);
 
 	  return UserCards;
 	}(_react.Component);
 
 	exports.default = UserCards;
-
-	// nameStorage = firebase.storage().ref()
 
 /***/ },
 /* 539 */
@@ -36105,27 +36092,28 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'user-card' },
+	        { className: 'user-card', id: this.props.contact.id },
 	        _react2.default.createElement(
-	          _reactRouter.IndexLink,
-	          { to: '/allinfo' },
-	          _react2.default.createElement('button', null)
-	        ),
-	        _react2.default.createElement(
-	          'article',
-	          null,
-	          (0, _moment2.default)(this.props.contact.id).format('L')
-	        ),
-	        _react2.default.createElement('img', null),
-	        _react2.default.createElement(
-	          'h1',
-	          null,
-	          this.props.contact.fullName
-	        ),
-	        _react2.default.createElement(
-	          'h2',
-	          null,
-	          this.props.contact.company
+	          _reactRouter.Link,
+	          { to: 'usercontactinfo/' + this.props.contact.id },
+	          'Wow',
+	          _react2.default.createElement('button', null),
+	          _react2.default.createElement(
+	            'article',
+	            null,
+	            (0, _moment2.default)(this.props.contact.id).format('L')
+	          ),
+	          _react2.default.createElement('img', null),
+	          _react2.default.createElement(
+	            'h1',
+	            null,
+	            this.props.contact.fullName
+	          ),
+	          _react2.default.createElement(
+	            'h2',
+	            null,
+	            this.props.contact.company
+	          )
 	        )
 	      );
 	    }
@@ -50206,6 +50194,14 @@
 
 	var _reactRouter = __webpack_require__(469);
 
+	var _UserCard = __webpack_require__(539);
+
+	var _UserCard2 = _interopRequireDefault(_UserCard);
+
+	var _NewContact = __webpack_require__(645);
+
+	var _NewContact2 = _interopRequireDefault(_NewContact);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -50217,27 +50213,102 @@
 	var AllInfoCard = function (_Component) {
 	  _inherits(AllInfoCard, _Component);
 
-	  function AllInfoCard() {
+	  function AllInfoCard(props) {
 	    _classCallCheck(this, AllInfoCard);
 
 	    var _this = _possibleConstructorReturn(this, (AllInfoCard.__proto__ || Object.getPrototypeOf(AllInfoCard)).call(this));
 
-	    _this.state = {};
+	    _this.state = {
+	      contact: {}
+	    };
 	    return _this;
 	  }
 
 	  _createClass(AllInfoCard, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var _this2 = this;
+
+	      var updateState = function updateState(snapshot) {
+	        _this2.setState(Object.assign(_this2.state.contact, snapshot.val()));
+	      };
+
+	      this.baseContactReference.on('value', updateState);
+	      this.contactInfoReference.on('value', updateState);
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
+	      // console.log(this.baseContactReference)
+	      // console.log(snapshot.val())
 	      return _react2.default.createElement(
 	        'div',
-	        null,
+	        { className: 'all-contact-info' },
 	        _react2.default.createElement(
-	          'h2',
+	          'h1',
 	          null,
-	          'hello'
+	          'Full Name: ',
+	          this.state.contact.fullName,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Company: ',
+	          this.state.contact.company,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'E-mail: ',
+	          this.state.contact.email
+	        ),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Phone: ',
+	          this.state.contact.phone,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'LinkedIn:',
+	          this.state.contact.linkedin,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Twitter: ',
+	          this.state.contact.twitter,
+	          ' '
+	        ),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'URL: ',
+	          this.state.contact.url
+	        ),
+	        _react2.default.createElement(
+	          'h1',
+	          null,
+	          'Notes: ',
+	          this.state.contact.notes,
+	          ' '
 	        )
 	      );
+	    }
+	  }, {
+	    key: 'baseContactReference',
+	    get: function get() {
+	      return _firebase2.default.database().ref('baseContact/' + _firebase2.default.auth().currentUser.uid + '/' + this.props.routeParams.id);
+	    }
+	  }, {
+	    key: 'contactInfoReference',
+	    get: function get() {
+	      return _firebase2.default.database().ref('contactInfo/' + _firebase2.default.auth().currentUser.uid + '/' + this.props.routeParams.id);
 	    }
 	  }]);
 
@@ -50295,9 +50366,7 @@
 	      linkedin: '',
 	      twitter: '',
 	      url: '',
-	      notes: '',
-	      file: '',
-	      previewImage: ''
+	      notes: ''
 	    };
 
 	    _this.handleFullNameChange = _this.handleFullNameChange.bind(_this);
@@ -50309,19 +50378,11 @@
 	    _this.handleUrlChange = _this.handleUrlChange.bind(_this);
 	    _this.handleNotesChange = _this.handleNotesChange.bind(_this);
 	    _this.addNewContact = _this.addNewContact.bind(_this);
-	    _this.handleImageChange = _this.handleImageChange.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(NewContact, [{
 	    key: 'handleFullNameChange',
-
-
-	    // get storageReference() {
-	    //   return
-	    //   firebase.storage().ref(`profileImage/${this.state.uid}`);
-	    // }
-
 	    value: function handleFullNameChange(event) {
 	      var fullName = event.target.value;
 	      this.setState({ fullName: fullName });
@@ -50369,25 +50430,6 @@
 	      this.setState({ notes: notes });
 	    }
 	  }, {
-	    key: 'handleImageChange',
-	    value: function handleImageChange(e) {
-	      var _this2 = this;
-
-	      e.preventDefault();
-
-	      var reader = new FileReader();
-	      var file = e.target.files[0];
-
-	      render.onloadend = function () {
-	        _this2.setState({
-	          file: file,
-	          previewImage: reader.result
-	        });
-	      };
-
-	      reader.readAsDataURL(file);
-	    }
-	  }, {
 	    key: 'addNewContact',
 	    value: function addNewContact(e) {
 	      e.preventDefault();
@@ -50404,15 +50446,10 @@
 	      var twitter = this.state.twitter;
 	      var url = this.state.url;
 	      var notes = this.state.notes;
-	      var file = this.state.file;
-	      var previewImage = this.state.previewImage;
 
 
-	      this.baseContactReference.push({ file: file, fullName: fullName, company: company, followUp: followUp, id: id });
-	      this.contactReference.push({ email: email, phone: phone, linkedin: linkedin, twitter: twitter, url: url, notes: notes, id: id });
-	      // this.storageReference.push({file}).then(function(snapshot) {
-	      //   console.log('Uploaded');
-	      // });
+	      this.baseContactReference.set({ fullName: fullName, company: company, followUp: followUp, id: id });
+	      this.contactReference.set({ email: email, phone: phone, linkedin: linkedin, twitter: twitter, url: url, notes: notes });
 	      this.setState({ fullName: '', company: '', id: Date.now() });
 	    }
 	  }, {
@@ -50421,7 +50458,6 @@
 	      return _react2.default.createElement(
 	        'form',
 	        { className: 'new-contact', onSubmit: this.addNewContact },
-	        _react2.default.createElement('input', { className: 'fileInput', type: 'file', onChange: this.handleImageChange }),
 	        _react2.default.createElement(
 	          'h1',
 	          null,
@@ -50500,12 +50536,12 @@
 	  }, {
 	    key: 'baseContactReference',
 	    get: function get() {
-	      return _firebase2.default.database().ref('baseContact/' + this.state.uid + '/');
+	      return _firebase2.default.database().ref('baseContact/' + this.state.uid + '/' + this.state.id);
 	    }
 	  }, {
 	    key: 'contactReference',
 	    get: function get() {
-	      return _firebase2.default.database().ref('contactInfo/' + this.state.uid + '/');
+	      return _firebase2.default.database().ref('contactInfo/' + this.state.uid + '/' + this.state.id);
 	    }
 	  }]);
 
@@ -50518,13 +50554,83 @@
 /* 646 */
 /***/ function(module, exports, __webpack_require__) {
 
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(299);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	var _reactRouter = __webpack_require__(469);
+
+	var _NavBar = __webpack_require__(537);
+
+	var _NavBar2 = _interopRequireDefault(_NavBar);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Main = function (_Component) {
+	  _inherits(Main, _Component);
+
+	  function Main() {
+	    _classCallCheck(this, Main);
+
+	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
+
+	    _this.state = {
+	      baseId: null,
+	      conactId: null
+	    };
+	    return _this;
+	  }
+
+	  // get setIdState() {
+	  //   this.set
+	  // }
+
+	  _createClass(Main, [{
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'div',
+	        null,
+	        _react2.default.createElement(_NavBar2.default, null),
+	        _react2.default.createElement(
+	          'div',
+	          null,
+	          this.props.children
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Main;
+	}(_react.Component);
+
+	exports.default = Main;
+
+/***/ },
+/* 647 */
+/***/ function(module, exports, __webpack_require__) {
+
 	// style-loader: Adds some css to the DOM by adding a <style> tag
 
 	// load the styles
-	var content = __webpack_require__(647);
+	var content = __webpack_require__(648);
 	if(typeof content === 'string') content = [[module.id, content, '']];
 	// add the styles to the DOM
-	var update = __webpack_require__(649)(content, {});
+	var update = __webpack_require__(650)(content, {});
 	if(content.locals) module.exports = content.locals;
 	// Hot Module Replacement
 	if(false) {
@@ -50541,21 +50647,21 @@
 	}
 
 /***/ },
-/* 647 */
+/* 648 */
 /***/ function(module, exports, __webpack_require__) {
 
-	exports = module.exports = __webpack_require__(648)();
+	exports = module.exports = __webpack_require__(649)();
 	// imports
 
 
 	// module
-	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\nbody {\n  background-color: #455A64;\n  color: #FFF; }\n\n.hidden {\n  display: none; }\n", ""]);
+	exports.push([module.id, "/* http://meyerweb.com/eric/tools/css/reset/\n   v2.0 | 20110126\n   License: none (public domain)\n*/\nhtml, body, div, span, applet, object, iframe,\nh1, h2, h3, h4, h5, h6, p, blockquote, pre,\na, abbr, acronym, address, big, cite, code,\ndel, dfn, em, img, ins, kbd, q, s, samp,\nsmall, strike, strong, sub, sup, tt, var,\nb, u, i, center,\ndl, dt, dd, ol, ul, li,\nfieldset, form, label, legend,\ntable, caption, tbody, tfoot, thead, tr, th, td,\narticle, aside, canvas, details, embed,\nfigure, figcaption, footer, header, hgroup,\nmenu, nav, output, ruby, section, summary,\ntime, mark, audio, video {\n  margin: 0;\n  padding: 0;\n  border: 0;\n  font-size: 100%;\n  font: inherit;\n  vertical-align: baseline; }\n\n/* HTML5 display-role reset for older browsers */\narticle, aside, details, figcaption, figure,\nfooter, header, hgroup, menu, nav, section {\n  display: block; }\n\nbody {\n  line-height: 1; }\n\nol, ul {\n  list-style: none; }\n\nblockquote, q {\n  quotes: none; }\n\nblockquote:before, blockquote:after,\nq:before, q:after {\n  content: '';\n  content: none; }\n\ntable {\n  border-collapse: collapse;\n  border-spacing: 0; }\n\n.nav-bar {\n  background-color: #455A64;\n  color: #2A2F36;\n  display: flex; }\n\n.user-name-drop {\n  color: #FFFFFF; }\n\n.SignIn {\n  display: flex;\n  flex-direction: column;\n  font-family: \"Source Sans Pro\", sans-serif;\n  height: 100vh;\n  width: 100vw; }\n\n.logoContainer {\n  align-items: center;\n  align-content: center;\n  display: flex;\n  background-color: #455A64;\n  flex-direction: column;\n  height: 65vh; }\n\n.logo {\n  align-items: center;\n  margin: 7vh auto 2vh;\n  display: flex;\n  height: 70vw;\n  width: 70vw; }\n\n.logoName {\n  align-items: center;\n  color: #FFFFFF;\n  font-size: 15vw;\n  text-align: center; }\n\n.signInContainer {\n  align-content: center;\n  align-items: center;\n  display: flex;\n  height: 35vh;\n  flex-direction: column;\n  justify-content: center; }\n\n.signIn {\n  align-content: center;\n  display: flex;\n  font-size: 4vh;\n  justify-content: center;\n  margin-bottom: 1vh; }\n\n#googleButton {\n  background-color: blue;\n  color: white;\n  margin: 1vh; }\n\n.contactsScreen {\n  background-color: #CFD8DC;\n  height: 100vh;\n  width: 100vw; }\n", ""]);
 
 	// exports
 
 
 /***/ },
-/* 648 */
+/* 649 */
 /***/ function(module, exports) {
 
 	/*
@@ -50611,7 +50717,7 @@
 
 
 /***/ },
-/* 649 */
+/* 650 */
 /***/ function(module, exports, __webpack_require__) {
 
 	/*

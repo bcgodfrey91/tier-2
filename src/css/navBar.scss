@@ -2,6 +2,41 @@
 
 .nav-bar {
   background-color: $primary-dark-color;
-  color: $secondary-font-color;
   display: flex;
+  height: 7vh;
+  justify-content: space-between;
+}
+
+
+
+.user-name-drop {
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  color: $primary-font-color;
+  cursor: pointer;
+  font-family: $primary-font;
+  font-size: 3vh;
+  overflow: hidden;
+  outline: none;
+}
+
+.plusContact {
+  // background: url(./images/plus-white.svg);
+  background-color: transparent;
+  background-repeat: no-repeat;
+  border: none;
+  color: $primary-font-color;
+  cursor: pointer;
+  font-family: $primary-font;
+  font-size: 8vh;
+  margin-top: -2.2vh;
+  overflow: hidden;
+  outline: none;
+  margin-right: 3vw;
+}
+
+.star {
+  margin-left: 3vw;
+  width: 8vw;
 }

@@ -1,1 +1,84 @@
 @import 'variables';
+
+.allContactInfo {
+  display: flex;
+  flex-direction: column;
+  font-family: $primary-font;
+  margin: 0 6vw;
+}
+
+.baseContactInfo {
+  border-bottom: .5px solid;
+  font-size: 3.5vh;
+  padding: 3vh 0;
+}
+
+.baseTitle {
+  width: 28vw;
+}
+
+.name {
+  display: flex;
+}
+
+.fullName {
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+
+  margin-bottom: 3vh;
+}
+
+.company {
+  display: flex;
+}
+
+.companyName {
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+.contactInformation {
+  border-bottom: .5px solid;
+  padding: 3vh 0;
+}
+
+.contactInformation h1 {
+  font-size: 4vh;
+}
+
+.contactInformation h2 {
+  margin-top: 3vh;
+}
+
+.webInformation {
+  border-bottom: .5px solid;
+  padding: 3vh 0;
+}
+
+.webInformation h1 {
+  font-size: 4vh;
+}
+
+.webInformation h2 {
+  margin-top: 3vh;
+}
+
+.contactNotes {
+  padding: 3vh 0;
+}
+
+.contactNotes h1 {
+  font-size: 4vh;
+}
+
+.contactNotes h2 {
+  margin-top: 3vh;
+}
