@@ -85,18 +85,17 @@ class NewContact extends Component {
   addNewContact(e){
     e.preventDefault();
 
-    // const { baseContactReference } = this.props;
-    const { fullName }             = this.state;
-    // const { contactInfo }          = this.props;
-    const { company }              = this.state;
-    const { id }                   = this.state;
-    const { followUp }             = this.state;
-    const { email }                = this.state;
-    const { phone }                = this.state;
-    const { linkedin }             = this.state;
-    const { twitter }              = this.state;
-    const { url }                  = this.state;
-    const { notes }                = this.state;
+    const { fullName,
+            company,
+            id,
+            followUp,
+            email,
+            phone,
+            linkedin,
+            twitter,
+            url,
+            notes
+          } = this.state;
 
 
     this.baseContactReference.set({ fullName, company, followUp, id, email });
