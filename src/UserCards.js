@@ -3,19 +3,15 @@ import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 import UserCard from './UserCard';
 import firebase from './firebase';
 import NewContact from './NewContact';
-// import md5 from 'md5';
 
 class UserCards extends Component {
   constructor() {
     super();
     this.state = {
-      contacts:     [],
-      baseIdRef:    null,
-      contactIdRef: null
+      contacts: []
     };
     this.contactsArray = [];
   }
-
 
   get baseContactReference() {
     return firebase.database().ref(`baseContact/${firebase.auth().currentUser.uid}/`);
@@ -48,12 +44,6 @@ class UserCards extends Component {
       )
     })
   }
-
-  get setIdOnClick() {
-    // const Idref = this.state.contact.id
-    console.log(this.state.contact.id)
-  }
-
 
   render(){
     return(
