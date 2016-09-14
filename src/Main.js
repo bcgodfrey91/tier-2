@@ -1,10 +1,10 @@
 import React, { Component } from 'react';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
-import Nav from './NavBar'
+import Nav from './NavBar';
 
 class Main extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       baseId:   null,
       conactId: null

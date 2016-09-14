@@ -7,13 +7,13 @@ import NewContact from './NewContact';
 
 class UserCards extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       contacts:     [],
       baseIdRef:    null,
       contactIdRef: null
-    }
-    this.contactsArray = []
+    };
+    this.contactsArray = [];
   }
 
 
@@ -23,17 +23,15 @@ class UserCards extends Component {
 
   componentDidMount() {
     this.baseContactReference.on('child_added', (snapshot) => {
-      const newContactCard = snapshot.val()
-      var contactArr = {fullName: newContactCard.fullName, company:newContactCard.company, id: newContactCard.id}
-
-      this.contactsArray.push(contactArr)
-      this.setState({ contacts: this.contactsArray })
-
-    })
+      const newContactCard = snapshot.val();
+      var contactArr = {fullName: newContactCard.fullName, company:newContactCard.company, id: newContactCard.id};
+      this.contactsArray.push(contactArr);
+      this.setState({ contacts: this.contactsArray });
+    });
   }
 
   componentWillUnmount() {
-    this.baseContactReference.off()
+    this.baseContactReference.off();
   }
 
   loadCards() {

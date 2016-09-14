@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import moment from 'moment';
 import {AllInfoCard} from './AllInfoCard';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 
 
 class UserCard extends Component {
@@ -9,13 +9,13 @@ class UserCard extends Component {
 
   render(){
     return(
-      <div className="user-card" id={this.props.contact.id}>
-        <Link to={`usercontactinfo/${this.props.contact.id}`}>Wow<button></button>
-        <article>{moment(this.props.contact.id).format('L')}</article>
-        <img />
-        <h1>{this.props.contact.fullName}</h1>
-        <h2>{this.props.contact.company}</h2></Link>
-      </div>
+      <section className="userCard" id={this.props.contact.id}>
+        <Link to={`usercontactinfo/${this.props.contact.id}`}>
+        <article className="date">{moment(this.props.contact.id).format('L')}</article>
+        <img className="imageOnUserCard"  alt="User Image"/>
+        <h1 className="fullName">{this.props.contact.fullName}</h1>
+        <h2 className="companyName">{this.props.contact.company}</h2></Link>
+      </section>
     )
   }
 }
