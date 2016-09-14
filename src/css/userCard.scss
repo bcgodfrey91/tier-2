@@ -1,1 +1,58 @@
 @import 'variables';
+
+.userCard {
+  border: 2px solid $borders-color;
+  width: 90vw;
+  height: 20vh;
+  display: flex;
+  margin: auto;
+  margin-top: 15px;
+  border-radius: 10px;
+  background-color: $primary-card-color;
+  font: $primary-font;
+}
+
+.date {
+  font-weight: bolder;
+  display: flex;
+  justify-content: flex-end;
+  font-size: 0.8em;
+  margin-right: 10px;
+  margin-top: 5px;
+}
+
+a {
+  /* font: $primary-font; */
+  color: $secondary-font-color;
+  width: 100vw;
+  text-decoration: none;
+  position: relative;
+}
+
+.imgOnUserCard {
+  width: 15px;
+  height: 15px;
+  /* border-radius: 20px; */
+  /* border: 2px solid black; */
+}
+
+.fullName, .companyName {
+  width: 60vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  margin-left: 85px;
+}
+
+.fullName {
+  font-size: 1.5em;
+  position: absolute;
+  bottom: 56px;
+}
+
+.companyName {
+  margin-top: 10px;
+  font-size: 1em;
+  position: absolute;
+  bottom: 28px;
+}

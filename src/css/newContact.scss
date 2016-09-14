@@ -1,1 +1,71 @@
 @import 'variables';
+
+.newContact {
+  background-color: $secondary-light-color;
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  font: $primary-font;
+  overflow: visible;
+  color: $secondary-font-color;
+}
+
+.newContact .logo {
+  width: 80px;
+  height: 80px;
+  margin-top: 15px;
+  margin-bottom: 25px;
+}
+
+.nameContainer,
+.companyContainer,
+.emailContainer,
+.phoneContainer,
+.linkedinContainer,
+.twitterContainer,
+.urlContainer {
+  display: flex;
+  flex-direction: row;
+  margin-bottom: 35px;
+}
+
+.nameDescription,
+.companyDescription,
+.emailDescription,
+.phoneDescription,
+.linkedinDescription,
+.twitterDescription,
+.urlDescription {
+  font-size: 1em;
+  margin-right: 10px;
+  margin-left: 15px;
+}
+
+.fullNameInput,
+.companyNameInput,
+.emailInput,
+.phoneInput,
+.linkedinInput,
+.twitterInput,
+.urlInput {
+  width: 60vw;
+  height: 2vh;
+}
+
+.contactInfoPrimaryContainer,
+.mediaPrimaryContainer,
+.notePrimaryContainer {
+  font-size: 1.5em;
+  border-top: 2px solid $borders-color;
+  border-width: thin;
+  text-align: center;
+  margin-bottom: 17px;
+  padding-top: 20px;
+}
+
+.notesInput {
+  margin: auto;
+  width: 90vw;
+  height: 30vh;
+}

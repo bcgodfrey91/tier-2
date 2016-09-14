@@ -5,7 +5,7 @@ import { Router, IndexRoute, Route, browserHistory } from 'react-router';
 
 class NewContact extends Component {
   constructor() {
-    super()
+    super();
 
     this.state = {
       uid:      firebase.auth().currentUser.uid,
@@ -19,17 +19,17 @@ class NewContact extends Component {
       twitter:  '',
       url:      '',
       notes:    '',
-    }
+    };
 
-    this.handleFullNameChange = this.handleFullNameChange .bind(this)
-    this.handleCompanyChange  = this.handleCompanyChange  .bind(this)
-    this.handleEmailChange    = this.handleEmailChange    .bind(this)
-    this.handlePhoneChange    = this.handlePhoneChange    .bind(this)
-    this.handleLinkedinChange = this.handleLinkedinChange .bind(this)
-    this.handleTwitterChange  = this.handleTwitterChange  .bind(this)
-    this.handleUrlChange      = this.handleUrlChange      .bind(this)
-    this.handleNotesChange    = this.handleNotesChange    .bind(this)
-    this.addNewContact        = this.addNewContact        .bind(this)
+    this.handleFullNameChange = this.handleFullNameChange .bind(this);
+    this.handleCompanyChange  = this.handleCompanyChange  .bind(this);
+    this.handleEmailChange    = this.handleEmailChange    .bind(this);
+    this.handlePhoneChange    = this.handlePhoneChange    .bind(this);
+    this.handleLinkedinChange = this.handleLinkedinChange .bind(this);
+    this.handleTwitterChange  = this.handleTwitterChange  .bind(this);
+    this.handleUrlChange      = this.handleUrlChange      .bind(this);
+    this.handleNotesChange    = this.handleNotesChange    .bind(this);
+    this.addNewContact        = this.addNewContact        .bind(this);
   }
 
 
@@ -43,51 +43,51 @@ class NewContact extends Component {
 
 
   handleFullNameChange(event) {
-    const fullName = event.target.value
-    this.setState({fullName: fullName})
+    const fullName = event.target.value;
+    this.setState({fullName: fullName});
   }
 
   handleCompanyChange(event) {
-    const company = event.target.value
-    this.setState({company: company})
+    const company = event.target.value;
+    this.setState({company: company});
   }
 
   handleEmailChange(event) {
-    const email = event.target.value
-    this.setState({email: email})
+    const email = event.target.value;
+    this.setState({email: email});
   }
 
   handlePhoneChange(event) {
-    const phone = event.target.value
-    this.setState({phone: phone})
+    const phone = event.target.value;
+    this.setState({phone: phone});
   }
 
   handleLinkedinChange(event) {
-    const linkedin = event.target.value
-    this.setState({linkedin: linkedin})
+    const linkedin = event.target.value;
+    this.setState({linkedin: linkedin});
   }
 
   handleTwitterChange(event) {
-    const twitter = event.target.value
-    this.setState({twitter: twitter})
+    const twitter = event.target.value;
+    this.setState({twitter: twitter});
   }
 
   handleUrlChange(event) {
-    const url = event.target.value
-    this.setState({url: url})
+    const url = event.target.value;
+    this.setState({url: url});
   }
 
   handleNotesChange(event) {
-    const notes = event.target.value
-    this.setState({notes: notes})
+    const notes = event.target.value;
+    this.setState({notes: notes});
   }
 
   addNewContact(e){
     e.preventDefault();
 
-    const { baseContactReference } = this.props;
+    // const { baseContactReference } = this.props;
     const { fullName }             = this.state;
-    const { contactInfo }          = this.props;
+    // const { contactInfo }          = this.props;
     const { company }              = this.state;
     const { id }                   = this.state;
     const { followUp }             = this.state;
@@ -101,55 +101,71 @@ class NewContact extends Component {
 
     this.baseContactReference.set({ fullName, company, followUp, id });
     this.contactReference.set({ email, phone, linkedin, twitter, url, notes});
-    this.setState({ fullName: '', company: '', id: Date.now() })
-
+    this.setState({ fullName: '', company: '', id: Date.now() });
   }
-
-
 
   render() {
     return (
-      <form className='new-contact' onSubmit={this.addNewContact}>
-        <h1>Full Name: </h1>
+      <form className='newContact' onSubmit={this.addNewContact}>
+        <img className="logo" src="./src/css/images/main-logo.svg" alt="Remembr logo"/>
+        <section className="nameContainer">
+          <h2 className="nameDescription">Full Name: </h2>
           <input
-            className='full-name'
+            className='fullNameInput'
             onChange={this.handleFullNameChange}
           />
-        <h1>Company: </h1>
+        </section>
+        <section className="companyContainer">
+          <h2 className="companyDescription">Company: </h2>
           <input
-            className='company-name'
+            className='companyNameInput'
             onChange={this.handleCompanyChange}
           />
-        <h1>E-mail: </h1>
+        </section>
+        <h1 className="contactInfoPrimaryContainer">Contact Information</h1>
+        <section className="emailContainer">
+          <h2 className="emailDescription">E-mail: </h2>
           <input
-            className='email'
+            className='emailInput'
             onChange={this.handleEmailChange}
           />
-        <h1>Phone: </h1>
+        </section>
+        <section className="phoneContainer">
+          <h2 className="phoneDescription">Phone: </h2>
           <input
-            className='primary-phone'
+            className='phoneInput'
             onChange={this.handlePhoneChange}
           />
-        <h1>LinkedIn: </h1>
+        </section>
+        <h1 className="mediaPrimaryContainer">Media Information</h1>
+        <section className="linkedinContainer">
+          <h2 className="linkedinDescription">LinkedIn: </h2>
           <input
-            className='linkedin'
+            className='linkedinInput'
             onChange={this.handleLinkedinChange}
           />
-        <h1>Twitter: </h1>
+        </section>
+        <section className="twitterContainer">
+          <h2 className="twitterDescription">Twitter: </h2>
           <input
-            className='twitter'
+            className='twitterInput'
             onChange={this.handleTwitterChange}
           />
-        <h1>URL: </h1>
+        </section>
+        <section className="urlContainer">
+          <h2 className="urlDescription">URL: </h2>
           <input
-            className='url'
+            className='urlInput'
             onChange={this.handleUrlChange}
           />
-        <h1>Notes: </h1>
+        </section>
+        <h1 className="notePrimaryContainer">Notes</h1>
+
           <textarea
-            className='notes'
+            className='notesInput'
             onChange={this.handleNotesChange}
           />
+
         <input type="submit" value="new contact" />
       </form>
     );
