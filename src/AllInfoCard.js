@@ -1,6 +1,6 @@
 import firebase from './firebase';
 import React, {Component} from 'react';
-import { Link } from 'react-router';
+import { Link, browserHistory } from 'react-router';
 import UserCard from './UserCard';
 import NewContact from './NewContact';
 
@@ -11,7 +11,8 @@ class AllInfoCard extends Component {
     this.state = {
       contact: {}
     };
-    this.handleFollowUps = this.handleFollowUps.bind(this);
+    this.handleFollowUps    = this.handleFollowUps   .bind(this);
+    this.handleDeleteButton = this.handleDeleteButton.bind(this);
   }
 
   get baseContactReference() {
@@ -43,6 +44,11 @@ class AllInfoCard extends Component {
     this.contactInfoReference.on('value', updateState);
   }
 
+  handleDeleteButton(){
+    this.baseContactReference.remove();
+    this.contactInfoReference.remove();
+    browserHistory.push('/home');
+  }
 
 
   render() {
@@ -72,6 +78,14 @@ class AllInfoCard extends Component {
         <article className='contactNotes'>
           <h1>Contact Notes</h1>
           <h2 className='notes'> {this.state.contact.notes}</h2>
+        </article>
+        <article className='buttons'>
+          <button
+          className='delete-button'
+          onClick={this.handleDeleteButton}
+          >
+            Delete
+          </button>
         </article>
       </section>
     )
