@@ -99,8 +99,8 @@ class NewContact extends Component {
     const { notes }                = this.state;
 
 
-    this.baseContactReference.set({ fullName, company, followUp, id });
-    this.contactReference.set({ email, phone, linkedin, twitter, url, notes});
+    this.baseContactReference.set({ fullName, company, followUp, id, email });
+    this.contactReference.set({ email, phone, linkedin, twitter, url, notes });
     this.setState({ fullName: '', company: '', id: Date.now() });
   }
 

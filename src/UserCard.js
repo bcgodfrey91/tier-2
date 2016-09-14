@@ -2,19 +2,29 @@ import React, {Component} from 'react';
 import moment from 'moment';
 import {AllInfoCard} from './AllInfoCard';
 import { Link } from 'react-router';
-
+import Gravatar from 'react-gravatar';
 
 class UserCard extends Component {
+
+
+  // gravatarImg() {
+  //   let image = this.props.contact.email;
+  //   return gravatar.url(image);
+  // }
 
 
   render(){
     return(
       <section className="userCard" id={this.props.contact.id}>
-        <Link to={`usercontactinfo/${this.props.contact.id}`}>
-        <article className="date">{moment(this.props.contact.id).format('L')}</article>
-        <img className="imageOnUserCard"  alt="User Image"/>
-        <h1 className="fullName">{this.props.contact.fullName}</h1>
-        <h2 className="companyName">{this.props.contact.company}</h2></Link>
+        <Link
+          to={`usercontactinfo/${this.props.contact.id}`}
+          className="smallIndividualLink"
+        >
+          <Gravatar email="{this.props.contact.email}" />
+          {/* <img className="imageOnUserCard" src='gravatarImg' alt="User Image"/> */}
+          <h1 className="fullNameCard">{this.props.contact.fullName}</h1>
+          <h2 className="companyNameCard">{this.props.contact.company}</h2>
+        </Link>
       </section>
     )
   }

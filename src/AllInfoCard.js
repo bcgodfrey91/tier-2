@@ -56,7 +56,7 @@ class AllInfoCard extends Component {
         </article>
         <article className='contactNotes'>
           <h1>Contact Notes</h1>
-          <h2 className='notes' editable> {this.state.contact.notes}</h2>
+          <h2 className='notes'> {this.state.contact.notes}</h2>
         </article>
       </section>
     )
