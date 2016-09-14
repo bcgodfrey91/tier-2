@@ -21,12 +21,12 @@
   margin-top: 5px;
 }
 
-a {
+.smallIndividualLink {
   /* font: $primary-font; */
   color: $secondary-font-color;
   width: 100vw;
   text-decoration: none;
-  position: relative;
+  /* position: relative; */
 }
 
 .imgOnUserCard {
@@ -36,7 +36,7 @@ a {
   /* border: 2px solid black; */
 }
 
-.fullName, .companyName {
+.fullNameCard, .companyNameCard {
   width: 60vw;
   overflow: hidden;
   text-overflow: ellipsis;
@@ -44,15 +44,15 @@ a {
   margin-left: 85px;
 }
 
-.fullName {
+.fullNameCard {
   font-size: 1.5em;
-  position: absolute;
-  bottom: 56px;
+  /* position: absolute;
+  bottom: 56px; */
 }
 
-.companyName {
+.companyNameCard {
   margin-top: 10px;
   font-size: 1em;
-  position: absolute;
-  bottom: 28px;
+/*   position: absolute;
+bottom: 28px; */
 }

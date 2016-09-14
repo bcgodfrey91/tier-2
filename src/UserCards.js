@@ -24,7 +24,12 @@ class UserCards extends Component {
   componentDidMount() {
     this.baseContactReference.on('child_added', (snapshot) => {
       const newContactCard = snapshot.val();
-      var contactArr = {fullName: newContactCard.fullName, company:newContactCard.company, id: newContactCard.id};
+      var contactArr = {
+        fullName: newContactCard.fullName,
+        company:newContactCard.company,
+        id: newContactCard.id,
+        email: newContactCard.email
+      };
       this.contactsArray.push(contactArr);
       this.setState({ contacts: this.contactsArray });
     });
@@ -38,7 +43,7 @@ class UserCards extends Component {
     return this.state.contacts.map(contact => {
       return(
         <div key={contact.id}>
-          <UserCard contact={contact}/>
+          <UserCard contact={contact} email={contact.email}/>
         </div>
       )
     })
