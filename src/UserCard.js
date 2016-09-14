@@ -6,13 +6,6 @@ import Gravatar from 'react-gravatar';
 
 class UserCard extends Component {
 
-
-  // gravatarImg() {
-  //   let image = this.props.contact.email;
-  //   return gravatar.url(image);
-  // }
-
-
   render(){
     return(
       <section className="userCard" id={this.props.contact.id}>
@@ -20,8 +13,7 @@ class UserCard extends Component {
           to={`usercontactinfo/${this.props.contact.id}`}
           className="smallIndividualLink"
         >
-          <Gravatar email="{this.props.contact.email}" />
-          {/* <img className="imageOnUserCard" src='gravatarImg' alt="User Image"/> */}
+          <Gravatar email={this.props.contact.email} />
           <h1 className="fullNameCard">{this.props.contact.fullName}</h1>
           <h2 className="companyNameCard">{this.props.contact.company}</h2>
         </Link>
