@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {Link, Router, IndexRoute, Route, browserHistory } from 'react-router';
 import { Home } from './Home';
-import firebase from './firebase'
+import firebase from './firebase';
 
 class NavBar extends Component {
   render(){

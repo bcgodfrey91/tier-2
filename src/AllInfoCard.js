@@ -1,16 +1,16 @@
-import firebase from './firebase'
+import firebase from './firebase';
 import React, {Component} from 'react';
-import { Link } from 'react-router'
+import { Link } from 'react-router';
 import UserCard from './UserCard';
 import NewContact from './NewContact';
 
 
 class AllInfoCard extends Component {
-  constructor(props){
-    super()
+  constructor(){
+    super();
     this.state = {
       contact: {}
-    }
+    };
   }
 
   get baseContactReference() {

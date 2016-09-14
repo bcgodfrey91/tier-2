@@ -1,21 +1,21 @@
 import React, {Component} from 'react';
-import firebase from './firebase'
-import { browserHistory, Link, Router } from 'react-router'
+import firebase from './firebase';
+import { browserHistory, Link, Router } from 'react-router';
 
 const provider = new firebase.auth.GoogleAuthProvider();
 
 class SignIn extends Component {
   constructor() {
-    super()
+    super();
     this.state = {
       user: null,
-    }
+    };
   }
 
   componentDidMount() {
     firebase.auth().onAuthStateChanged((user) => {
       this.setState({ user });
-      browserHistory.push('/home')
+      browserHistory.push('/home');
     });
   }
 
