@@ -1,6 +1,7 @@
 import React, {Component} from 'react';
 import firebase from './firebase';
 import { Router, IndexRoute, Route, browserHistory } from 'react-router';
+import Nav from './NavBar';
 
 
 class NewContact extends Component {
@@ -104,9 +105,13 @@ class NewContact extends Component {
     this.setState({ fullName: '', company: '', id: Date.now() });
   }
 
+  handleGoHome(){
+    browserHistory.push('/home');
+  }
+
   handleSubmitInfo(e){
     this.addNewContact(e);
-    browserHistory.push('/home');
+    this.handleGoHome();
   }
 
   render() {
@@ -172,6 +177,7 @@ class NewContact extends Component {
           />
 
         <input type="submit" value="new contact" onClick={this.handleSubmitInfo} />
+        <input type="cancel" value="cancel-actions" onClick={this.handleGoHome} />
       </form>
     );
   }
