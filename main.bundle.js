@@ -8230,6 +8230,7 @@
 	    _reactRouter.Route,
 	    _defineProperty({ path: '/', component: _Main2.default }, 'path', 'home'),
 	    _react2.default.createElement(_reactRouter.IndexRoute, { component: _Home2.default }),
+	    _react2.default.createElement(_reactRouter.Route, { path: '/followUp', component: FollowUps }),
 	    _react2.default.createElement(_reactRouter.Route, { path: '/usercontactinfo/:id', component: _AllInfoCard2.default })
 	  ),
 	  _react2.default.createElement(_reactRouter.Route, { path: '/addcontact', component: _NewContact2.default })
@@ -35970,8 +35971,6 @@
 
 	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-	// import md5 from 'md5';
-
 	var UserCards = function (_Component) {
 	  _inherits(UserCards, _Component);
 
@@ -35981,9 +35980,7 @@
 	    var _this = _possibleConstructorReturn(this, (UserCards.__proto__ || Object.getPrototypeOf(UserCards)).call(this));
 
 	    _this.state = {
-	      contacts: [],
-	      baseIdRef: null,
-	      contactIdRef: null
+	      contacts: []
 	    };
 	    _this.contactsArray = [];
 	    return _this;
@@ -35996,7 +35993,12 @@
 
 	      this.baseContactReference.on('child_added', function (snapshot) {
 	        var newContactCard = snapshot.val();
-	        var contactArr = { fullName: newContactCard.fullName, company: newContactCard.company, id: newContactCard.id };
+	        var contactArr = {
+	          fullName: newContactCard.fullName,
+	          company: newContactCard.company,
+	          id: newContactCard.id,
+	          email: newContactCard.email
+	        };
 	        _this2.contactsArray.push(contactArr);
 	        _this2.setState({ contacts: _this2.contactsArray });
 	      });
@@ -36013,7 +36015,7 @@
 	        return _react2.default.createElement(
 	          'div',
 	          { key: contact.id },
-	          _react2.default.createElement(_UserCard2.default, { contact: contact })
+	          _react2.default.createElement(_UserCard2.default, { contact: contact, email: contact.email })
 	        );
 	      });
 	    }
@@ -36030,12 +36032,6 @@
 	    key: 'baseContactReference',
 	    get: function get() {
 	      return _firebase2.default.database().ref('baseContact/' + _firebase2.default.auth().currentUser.uid + '/');
-	    }
-	  }, {
-	    key: 'setIdOnClick',
-	    get: function get() {
-	      // const Idref = this.state.contact.id
-	      console.log(this.state.contact.id);
 	    }
 	  }]);
 
@@ -36097,8 +36093,11 @@
 	        { className: 'userCard', id: this.props.contact.id },
 	        _react2.default.createElement(
 	          _reactRouter.Link,
-	          { to: 'usercontactinfo/' + this.props.contact.id, className: 'smallIndividualLink' },
-	          _react2.default.createElement(_reactGravatar2.default, { email: 'paul.t.nguyen7@gmail.com' }),
+	          {
+	            to: 'usercontactinfo/' + this.props.contact.id,
+	            className: 'smallIndividualLink'
+	          },
+	          _react2.default.createElement(_reactGravatar2.default, { email: this.props.contact.email }),
 	          _react2.default.createElement(
 	            'h1',
 	            { className: 'fullNameCard' },
@@ -50216,10 +50215,20 @@
 	    _this.state = {
 	      contact: {}
 	    };
+	    _this.handleFollowUps = _this.handleFollowUps.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(AllInfoCard, [{
+	    key: 'handleFollowUps',
+	    value: function handleFollowUps() {
+	      if (this.state.contact.followUp === 0) {
+	        this.setState({ followUp: 1 });
+	      } else {
+	        this.setState({ followUp: 0 });
+	      }
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      var _this2 = this;
@@ -50267,7 +50276,8 @@
 	              'h2',
 	              { className: 'companyName' },
 	              this.state.contact.company
-	            )
+	            ),
+	            _react2.default.createElement('button', { onClick: this.handleFollowUps })
 	          )
 	        ),
 	        _react2.default.createElement(
@@ -50472,22 +50482,20 @@
 	    value: function addNewContact(e) {
 	      e.preventDefault();
 
-	      // const { baseContactReference } = this.props;
-	      var fullName = this.state.fullName;
-	      // const { contactInfo }          = this.props;
-
-	      var company = this.state.company;
-	      var id = this.state.id;
-	      var followUp = this.state.followUp;
-	      var email = this.state.email;
-	      var phone = this.state.phone;
-	      var linkedin = this.state.linkedin;
-	      var twitter = this.state.twitter;
-	      var url = this.state.url;
-	      var notes = this.state.notes;
+	      var _state = this.state;
+	      var fullName = _state.fullName;
+	      var company = _state.company;
+	      var id = _state.id;
+	      var followUp = _state.followUp;
+	      var email = _state.email;
+	      var phone = _state.phone;
+	      var linkedin = _state.linkedin;
+	      var twitter = _state.twitter;
+	      var url = _state.url;
+	      var notes = _state.notes;
 
 
-	      this.baseContactReference.set({ fullName: fullName, company: company, followUp: followUp, id: id });
+	      this.baseContactReference.set({ fullName: fullName, company: company, followUp: followUp, id: id, email: email });
 	      this.contactReference.set({ email: email, phone: phone, linkedin: linkedin, twitter: twitter, url: url, notes: notes });
 	      this.setState({ fullName: '', company: '', id: Date.now() });
 	    }
@@ -51274,18 +51282,8 @@
 	  function Main() {
 	    _classCallCheck(this, Main);
 
-	    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this));
-
-	    _this.state = {
-	      baseId: null,
-	      conactId: null
-	    };
-	    return _this;
+	    return _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).apply(this, arguments));
 	  }
-
-	  // get setIdState() {
-	  //   this.set
-	  // }
 
 	  _createClass(Main, [{
 	    key: 'render',

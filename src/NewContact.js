@@ -30,6 +30,7 @@ class NewContact extends Component {
     this.handleUrlChange      = this.handleUrlChange      .bind(this);
     this.handleNotesChange    = this.handleNotesChange    .bind(this);
     this.addNewContact        = this.addNewContact        .bind(this);
+    this.handleSubmitInfo     = this.handleSubmitInfo     .bind(this);
   }
 
 
@@ -103,6 +104,11 @@ class NewContact extends Component {
     this.setState({ fullName: '', company: '', id: Date.now() });
   }
 
+  handleSubmitInfo(e){
+    this.addNewContact(e);
+    browserHistory.push('/home');
+  }
+
   render() {
     return (
       <form className='newContact' onSubmit={this.addNewContact}>
@@ -165,7 +171,7 @@ class NewContact extends Component {
             onChange={this.handleNotesChange}
           />
 
-        <input type="submit" value="new contact" />
+        <input type="submit" value="new contact" onClick={this.handleSubmitInfo} />
       </form>
     );
   }

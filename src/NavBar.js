@@ -8,8 +8,12 @@ class NavBar extends Component {
   render(){
     return(
       <section className="nav-bar">
-        <img src="./src/css/images/star-filled.svg" className="star"/>
-        <button className="user-name-drop">{firebase.auth().currentUser.displayName}</button>
+        <Link to="/followUp">
+          <img src="./src/css/images/star-filled.svg" className="star" />
+        </Link>
+        <Link to="/home">
+          <button className="user-name-drop">{firebase.auth().currentUser.displayName}</button>
+        </Link>
         <Link to="/addcontact">
           <button className="plusContact">+</button>
         </Link>
