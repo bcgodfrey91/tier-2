@@ -27,6 +27,7 @@ class AllInfoCard extends Component {
     const { fullName,
             company,
             id,
+            followUp,
             email
           } = this.state;
     if (this.state.contact.followUp === 0){
@@ -36,7 +37,7 @@ class AllInfoCard extends Component {
     }
   }
 
-  componentDidMount() {
+  componentWillMount() {
     const updateState = (snapshot) => {
       this.setState(Object.assign(this.state.contact, snapshot.val()));
     };

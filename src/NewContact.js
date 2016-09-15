@@ -118,66 +118,78 @@ class NewContact extends Component {
     return (
       <form className='newContact' onSubmit={this.addNewContact}>
         <img className="logo" src="./src/css/images/main-logo.svg" alt="Remembr logo"/>
-        <section className="nameContainer">
-          <h2 className="nameDescription">Full Name: </h2>
+        <h1 className="addAContact primaryContainer">Add A Contact</h1>
+        <section className="nameContainer container">
+          <h2 className="nameDescription description ">Full Name: </h2>
           <input
-            className='fullNameInput'
+            className='fullNameInput formInput'
             onChange={this.handleFullNameChange}
           />
         </section>
-        <section className="companyContainer">
-          <h2 className="companyDescription">Company: </h2>
+        <section className="companyContainer container">
+          <h2 className="companyDescription description">Company: </h2>
           <input
-            className='companyNameInput'
+            className='companyNameInput formInput'
             onChange={this.handleCompanyChange}
           />
         </section>
-        <h1 className="contactInfoPrimaryContainer">Contact Information</h1>
-        <section className="emailContainer">
-          <h2 className="emailDescription">E-mail: </h2>
+        <h1 className="contactInfoPrimaryContainer primaryContainer">Contact Information</h1>
+        <section className="emailContainer container">
+          <h2 className="emailDescription description">E-mail: </h2>
           <input
-            className='emailInput'
+            className='emailInput formInput'
             onChange={this.handleEmailChange}
           />
         </section>
-        <section className="phoneContainer">
-          <h2 className="phoneDescription">Phone: </h2>
+        <section className="phoneContainer container">
+          <h2 className="phoneDescription description">Phone: </h2>
           <input
-            className='phoneInput'
+            className='phoneInput formInput'
             onChange={this.handlePhoneChange}
           />
         </section>
-        <h1 className="mediaPrimaryContainer">Media Information</h1>
-        <section className="linkedinContainer">
-          <h2 className="linkedinDescription">LinkedIn: </h2>
+        <h1 className="mediaPrimaryContainer primaryContainer">Media Information</h1>
+        <section className="linkedinContainer container">
+          <h2 className="linkedinDescription description">LinkedIn: </h2>
           <input
-            className='linkedinInput'
+            className='linkedinInput formInput'
             onChange={this.handleLinkedinChange}
           />
         </section>
-        <section className="twitterContainer">
-          <h2 className="twitterDescription">Twitter: </h2>
+        <section className="twitterContainer container">
+          <h2 className="twitterDescription description">Twitter: </h2>
           <input
-            className='twitterInput'
+            className='twitterInput formInput'
             onChange={this.handleTwitterChange}
           />
         </section>
-        <section className="urlContainer">
-          <h2 className="urlDescription">URL: </h2>
+        <section className="urlContainer container">
+          <h2 className="urlDescription description">URL: </h2>
           <input
-            className='urlInput'
+            className='urlInput formInput'
             onChange={this.handleUrlChange}
           />
         </section>
-        <h1 className="notePrimaryContainer">Notes</h1>
+        <h1 className="notePrimaryContainer primaryContainer">Notes</h1>
 
           <textarea
             className='notesInput'
             onChange={this.handleNotesChange}
           />
-
-        <input type="submit" value="new contact" onClick={this.handleSubmitInfo} />
-        <input type="cancel" value="cancel-actions" onClick={this.handleGoHome} />
+        <section className='formButtons'>
+          <input
+          className="cancelButton buttonz"
+          type="button"
+          value="Cancel"
+          onClick={this.handleGoHome}
+          />
+          <input
+          className="submitButton buttonz"
+          type="submit"
+          value="New Contact"
+          onClick={this.handleSubmitInfo}
+          />
+        </section>
       </form>
     );
   }

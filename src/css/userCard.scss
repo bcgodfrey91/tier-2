@@ -4,12 +4,20 @@
   border: 2px solid $borders-color;
   width: 90vw;
   height: 20vh;
+  font-family: $primary-font;
   display: flex;
   margin: auto;
   margin-top: 15px;
   border-radius: 10px;
   background-color: $primary-card-color;
-  font: $primary-font;
+}
+
+.smallIndividualLink {
+  color: $secondary-font-color;
+  display:flex;
+  flex-direction: column;
+  width: 100vw;
+  text-decoration: none;
 }
 
 .date {
@@ -21,38 +29,37 @@
   margin-top: 5px;
 }
 
-.smallIndividualLink {
-  /* font: $primary-font; */
-  color: $secondary-font-color;
-  width: 100vw;
-  text-decoration: none;
-  /* position: relative; */
+.contentCard {
+  display: flex;
+  flex-direction: row;
 }
 
 .imgOnUserCard {
-  width: 15px;
-  height: 15px;
-  /* border-radius: 20px; */
-  /* border: 2px solid black; */
+  width: 13vh;
+  height: 13vh;
+  border-radius: 50px;
+  margin-left: 4vw;
+}
+
+.basicInfoCard {
+  margin: 2vh 0 0 3vh;
+  text-align: center;
 }
 
 .fullNameCard, .companyNameCard {
-  width: 60vw;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  margin-left: 85px;
+  width: 55vw;
 }
 
 .fullNameCard {
   font-size: 1.5em;
-  /* position: absolute;
-  bottom: 56px; */
+  overflow-wrap: break-word;
 }
 
 .companyNameCard {
-  margin-top: 10px;
-  font-size: 1em;
-/*   position: absolute;
-bottom: 28px; */
+  margin-top: 1vh;
+  height: 7vh;
+  font-size: 1.1em;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }

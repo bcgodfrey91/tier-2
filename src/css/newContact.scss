@@ -2,12 +2,10 @@
 
 .newContact {
   background-color: $secondary-light-color;
-  height: 100vh;
   width: 100vw;
   display: flex;
   flex-direction: column;
-  font: $primary-font;
-  /* overflow: visible; */
+  font-family: $primary-font;
   color: $secondary-font-color;
 }
 
@@ -18,54 +16,68 @@
   margin-bottom: 25px;
 }
 
-.nameContainer,
-.companyContainer,
-.emailContainer,
-.phoneContainer,
-.linkedinContainer,
-.twitterContainer,
-.urlContainer {
+.container {
   display: flex;
   flex-direction: row;
   margin-bottom: 35px;
 }
 
-.nameDescription,
-.companyDescription,
-.emailDescription,
-.phoneDescription,
-.linkedinDescription,
-.twitterDescription,
-.urlDescription {
+.description {
   font-size: 1em;
+  flex: 1;
   margin-right: 10px;
   margin-left: 15px;
 }
 
-.fullNameInput,
-.companyNameInput,
-.emailInput,
-.phoneInput,
-.linkedinInput,
-.twitterInput,
-.urlInput {
+.formInput {
   width: 60vw;
   height: 2vh;
+  margin-right: 5vw;
 }
 
-.contactInfoPrimaryContainer,
-.mediaPrimaryContainer,
-.notePrimaryContainer {
+.primaryContainer {
   font-size: 1.5em;
   border-top: 2px solid $borders-color;
   border-width: thin;
   text-align: center;
-  margin-bottom: 17px;
-  padding-top: 20px;
+  padding-top: 4vh;
+  width: 90vw;
+  margin: 0 auto 5vh;
+}
+
+.addAContact {
+  border: none;
+  padding-top: 0;
 }
 
 .notesInput {
   margin: auto;
   width: 90vw;
   height: 30vh;
+}
+
+.formButtons {
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+}
+
+.buttonz {
+  text-align: center;
+  border-radius: 2vh;
+  width: 35vw;
+  height: 8vh;
+  margin: 3vh 7vw;
+  font-size: 2.5vh;
+}
+
+.submitButton {
+  background-color: $primary-dark-color;
+  color: $primary-font-color;
+}
+
+.cancelButton {
+  border: 1px solid $primary-dark-color;
+  color: $secondary-font-color;
+  background-color: $primary-card-color;
 }
