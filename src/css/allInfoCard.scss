@@ -1,10 +1,21 @@
 @import 'variables';
 
 .allContactInfo {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
+  font: $secondary-font-color;
   font-family: $primary-font;
   margin: 0 6vw;
+}
+
+h1,
+.name,
+.company {
+  font-weight: 600;
 }
 
 .baseContactInfo {
@@ -14,10 +25,15 @@
 }
 
 .baseTitle {
+  margin-right: 1vw;
   width: 28vw;
 }
 
 .name {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
 }
 
@@ -28,11 +44,14 @@
   hyphens: auto;
   overflow-wrap: break-word;
   word-wrap: break-word;
-
   margin-bottom: 3vh;
 }
 
 .company {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
 }
 
@@ -43,6 +62,7 @@
   hyphens: auto;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  margin: 0 2vw 0 0;
 }
 
 .contactInformation {
@@ -54,10 +74,6 @@
   font-size: 4vh;
 }
 
-.contactInformation h2 {
-  margin-top: 3vh;
-}
-
 .webInformation {
   border-bottom: .5px solid;
   padding: 3vh 0;
@@ -65,10 +81,6 @@
 
 .webInformation h1 {
   font-size: 4vh;
-}
-
-.webInformation h2 {
-  margin-top: 3vh;
 }
 
 .contactNotes {
@@ -81,4 +93,99 @@
 
 .contactNotes h2 {
   margin-top: 3vh;
+}
+
+.title {
+  margin-top: 3vh;
+}
+
+.userImage {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+  margin: 2vh 0 5vh;
+}
+
+.gravatarImage {
+  border-radius: 20vh;
+  height: 20vh;
+  width: 20vh;
+}
+
+.followUpArea {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  margin: 5vh 0 0 0;
+  justify-content: center;
+}
+
+.followUpButton {
+  background-color: $primary-dark-color;
+  border: none;
+  border-radius: 1vh;
+  color: $primary-font-color;
+  font-size: 2.5vh;
+  font-weight: 600;
+  height: 5vh;
+  width: 50vw;
+}
+
+.buttons {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
+  display: flex;
+  justify-content: center;
+}
+
+.deleteButton {
+  background-color: #D32F2F;
+  border: none;
+  border-radius: 1vh;
+  color: $primary-font-color;
+  margin: 4vh 0;
+  font-size: 2.5vh;
+  font-weight: 600;
+  height: 5vh;
+  width: 50vw;
+}
+
+.title, .notes {
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+}
+
+@media (min-width: 700px) {
+  .allContactInfo {
+    align-content: center;
+    width: 70vw;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 7vh;
+  }
+
+  .name, .company {
+    font-size: 5vh;
+  }
+
+  .baseTitle {
+    width: 175px;
+  }
+
+  .title {
+    font-size: 3vh;
+  }
 }

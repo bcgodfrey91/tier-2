@@ -11,7 +11,8 @@ class NavBar extends Component {
         <Link to="/followUp">
           <img src="./src/css/images/star-filled.svg" className="star" />
         </Link>
-        <Link to="/home">
+        <Link to="/home" className="homeLink">
+          <img src="./src/css/images/home-white.svg" className="homeIcon"/>
           <button className="user-name-drop">{firebase.auth().currentUser.displayName}</button>
         </Link>
         <Link to="/addcontact">

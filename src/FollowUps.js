@@ -50,7 +50,7 @@ class FollowUps extends Component {
 
   render(){
     return(
-      <div className="user-cards">
+      <div className="user-cards contactsScreen">
         {this.loadCards()}
       </div>
     )
