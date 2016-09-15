@@ -15,7 +15,7 @@ class UserCard extends Component {
         >
           <article className="date">{moment(this.props.contact.id).format('L')}</article>
           <section className="contentCard">
-            <Gravatar email={this.props.contact.email} className="imgOnUserCard"/>
+            <Gravatar email={this.props.contact.email} default="monsterid" className="imgOnUserCard"/>
             <article className="basicInfoCard">
               <h1 className="fullNameCard">{this.props.contact.fullName}</h1>
               <h2 className="companyNameCard">{this.props.contact.company}</h2>

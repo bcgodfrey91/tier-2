@@ -42,24 +42,116 @@
 }
 
 .basicInfoCard {
-  margin: 2vh 0 0 3vh;
+  margin: 2vh 0 0 2vh;
   text-align: center;
 }
 
 .fullNameCard, .companyNameCard {
   width: 55vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .fullNameCard {
-  font-size: 1.5em;
-  overflow-wrap: break-word;
+  font-size: 1.7em;
+  height: 6.5vh;
+  /* overflow-wrap: break-word; */
 }
 
 .companyNameCard {
   margin-top: 1vh;
-  height: 7vh;
+  height: 6.5vh;
   font-size: 1.1em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
+}
+
+@media (min-width: 350px) {
+  .fullNameCard {
+    font-size: 2em;
+  }
+
+  .companyNameCard {
+    font-size: 1.3em;
+    margin: 0;
+  }
+}
+
+@media (min-width: 400px) {
+  .date {
+    font-size: 1em;
+  }
+  .fullNameCard {
+    font-size: 2.2em;
+  }
+
+  .companyNameCard {
+    font-size: 1.4em;
+  }
+}
+
+@media (min-width: 625px) {
+  .userCard {
+    width: 600px;
+    height: 19vh;
+  }
+
+  .basicInfoCard {
+    margin-top: 0;
+    margin-left: 2vw;
+  }
+
+  .date {
+    font-size: 1.2em;
+  }
+
+  .imgOnUserCard {
+    border-radius: 50%;
+  }
+
+  .fullNameCard, .companyNameCard {
+  width: 400px;
+  }
+
+  .fullNameCard {
+    font-size: 2.3em;
+  }
+
+  .companyNameCard {
+    font-size: 1.6em;
+  }
+}
+
+@media (min-width: 900px) {
+  .userCard {
+    width: 450px;
+    height: 130px;
+  }
+
+  .UserCards {
+    display: flex;
+    flex-direction: row;
+  }
+
+  .basicInfoCard {
+    margin-top: 4px;
+  }
+
+  .contactInfoCard {
+    display: flex;
+    flex-direction: row;
+    width: 50%;
+    display: inline-block;
+  }
+
+  .imgOnUserCard {
+    width: 90px;
+    height: 90px;
+    margin-left: 25px;
+    /* margin-bottom: 25px; */
+  }
+
+  .fullNameCard, .companyNameCard {
+    width: 230px;
+  }
+
 }
