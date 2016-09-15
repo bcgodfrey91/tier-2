@@ -4,6 +4,10 @@
   background-color: $secondary-light-color;
   height: 100vh;
   width: 100vw;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
 }

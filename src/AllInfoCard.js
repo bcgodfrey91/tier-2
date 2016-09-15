@@ -61,11 +61,11 @@ class AllInfoCard extends Component {
             <Gravatar email={this.state.contact.email} className='gravatarImage'/>
           </article>
           <article className='name'>
-            <h2 className='baseTitle title'>Full Name:</h2>
+            <h2 className='baseTitle'>Full Name:</h2>
             <h2 className='fullName'>{this.state.contact.fullName}</h2>
           </article>
           <article className='company'>
-            <h2 className='baseTitle title'>Company:</h2> <h2 className='companyName'>{this.state.contact.company}</h2>
+            <h2 className='baseTitle'>Company:</h2> <h2 className='companyName'>{this.state.contact.company}</h2>
           </article>
           <article className='followUpArea'>
           <button onClick={this.handleFollowUps} className='followUpButton'>Toggle Follow Up</button>

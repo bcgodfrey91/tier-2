@@ -1,6 +1,10 @@
 @import 'variables';
 
 .allContactInfo {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex-direction: column;
   font: $secondary-font-color;
@@ -26,6 +30,10 @@ h1,
 }
 
 .name {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
 }
 
@@ -36,11 +44,14 @@ h1,
   hyphens: auto;
   overflow-wrap: break-word;
   word-wrap: break-word;
-
   margin-bottom: 3vh;
 }
 
 .company {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
 }
 
@@ -63,10 +74,6 @@ h1,
   font-size: 4vh;
 }
 
-.contactInformation h2 {
-  margin-top: 3vh;
-}
-
 .webInformation {
   border-bottom: .5px solid;
   padding: 3vh 0;
@@ -74,10 +81,6 @@ h1,
 
 .webInformation h1 {
   font-size: 4vh;
-}
-
-.webInformation h2 {
-  margin-top: 3vh;
 }
 
 .contactNotes {
@@ -92,7 +95,15 @@ h1,
   margin-top: 3vh;
 }
 
+.title {
+  margin-top: 3vh;
+}
+
 .userImage {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   justify-content: center;
   margin: 2vh 0 5vh;
@@ -105,6 +116,10 @@ h1,
 }
 
 .followUpArea {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   margin: 5vh 0 0 0;
   justify-content: center;
@@ -122,6 +137,10 @@ h1,
 }
 
 .buttons {
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   justify-content: center;
 }
@@ -145,4 +164,28 @@ h1,
   hyphens: auto;
   overflow-wrap: break-word;
   word-wrap: break-word;
+}
+
+@media (min-width: 700px) {
+  .allContactInfo {
+    align-content: center;
+    width: 70vw;
+    justify-content: center;
+  }
+
+  h1 {
+    font-size: 7vh;
+  }
+
+  .name, .company {
+    font-size: 5vh;
+  }
+
+  .baseTitle {
+    width: 175px;
+  }
+
+  .title {
+    font-size: 3vh;
+  }
 }

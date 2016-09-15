@@ -3,6 +3,10 @@
 .nav-bar {
   align-items: center;
   background-color: $primary-dark-color;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   height: 7vh;
   justify-content: space-between;
@@ -15,6 +19,10 @@
 
 .homeLink {
   align-items: center;
+  display: -webkit-box;
+  display: -moz-box;
+  display: -ms-flexbox;
+  display: -webkit-flex;
   display: flex;
   flex: 2;
   justify-content: center;
@@ -48,4 +56,10 @@
   overflow: hidden;
   outline: none;
   margin-right: 3vw;
+}
+
+@media (min-width: 700px) {
+  .star {
+    height: 40px;
+  }
 }
