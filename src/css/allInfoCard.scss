@@ -166,11 +166,40 @@ h1,
   word-wrap: break-word;
 }
 
+
 @media (min-width: 700px) {
+  .name, .company {
+    font-size: 3.5vh;
+  }
+
+  h1 {
+    font-size: 5vh;
+  }
+
+  .baseTitle {
+    width: 175px;
+  }
+
+  .title {
+    font-size: 1.2em;
+  }
+
+  .notes {
+    font-size: 1.2em;
+  }
+}
+
+@media (min-width: 800px) {
   .allContactInfo {
-    align-content: center;
-    width: 70vw;
+    align-items: center;
+    display: flex;
     justify-content: center;
+  }
+
+  .centerDesktop {
+    display: flex;
+    flex-direction: column;
+    width: 70vw;
   }
 
   h1 {
@@ -187,5 +216,15 @@ h1,
 
   .title {
     font-size: 3vh;
+  }
+
+  .followUpButton {
+    height: 40px;
+    width: 250px;
+  }
+
+  .deleteButton {
+    height: 40px;
+    width: 250px;
   }
 }

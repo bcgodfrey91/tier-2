@@ -48,6 +48,9 @@
 
 .fullNameCard, .companyNameCard {
   width: 55vw;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
 }
 
 .fullNameCard {
@@ -59,7 +62,4 @@
   margin-top: 1vh;
   height: 7vh;
   font-size: 1.1em;
-  overflow: hidden;
-  text-overflow: ellipsis;
-  white-space: nowrap;
 }
