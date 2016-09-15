@@ -27,9 +27,9 @@ class SignIn extends Component {
           <h1 className="logoName">Remembr</h1>
         </section>
         <section className="signInContainer">
-          <h2 className="signIn">Sign In With:</h2>
+          <h2 className="signIn">Log In:</h2>
           <button id="googleButton" onClick={() => firebase.auth().signInWithPopup(provider)}>
-          Google</button>
+          </button>
         </section>
       </section>
     );

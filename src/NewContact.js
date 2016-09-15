@@ -148,7 +148,6 @@ class NewContact extends Component {
           <h2 className="phoneDescription description">Phone: </h2>
           <input
             className='phoneInput formInput'
-            type='number'
             placeholder='303-555-5555'
             onChange={this.handlePhoneChange}
           />

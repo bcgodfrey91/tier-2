@@ -29,6 +29,7 @@
   align-items: center;
   color: $primary-font-color;
   font-size: 15vw;
+  margin-bottom: 3vh;
   text-align: center;
 }
 
@@ -50,11 +51,29 @@
 }
 
 #googleButton {
-  background-color: blue;
-  border:none;
-  color: white;
-  font-size: 3vh;
-  height: 5vh;
-  margin: 1vh;
-  width: 40vw;
+  background-image:url(/src/css/images/google-signin-normal-copy.png);
+  background-color: white;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  height: 15vh;
+  width: 100vw;
+}
+
+@media (min-width: 700px) {
+  .logoContainer {
+    background-image:url(/src/css/images/meeting.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    // background-position: center;
+  }
+  .signInContainer {
+    // display: none;
+  }
+
+  #googleButton {
+    background-image:url(/src/css/images/google-signin-normal.png);
+    height: 80px;
+    width: 50vw;
+  }
 }
