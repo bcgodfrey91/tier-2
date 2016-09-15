@@ -8,7 +8,7 @@ class UserCard extends Component {
 
   render(){
     return(
-      <section className="userCard" id={this.props.contact.id}>
+      <section className="userCard" id={this.props.contact.followUp}>
         <Link
           to={`usercontactinfo/${this.props.contact.id}`}
           className="smallIndividualLink"

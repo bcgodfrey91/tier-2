@@ -1,5 +1,10 @@
 @import 'variables';
 
+#a {
+  background-color: #ffeb3b;
+  color: $secondary-font-color;
+}
+
 .allContactInfo {
   display: -webkit-box;
   display: -moz-box;

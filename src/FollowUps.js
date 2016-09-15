@@ -27,7 +27,7 @@ class FollowUps extends Component {
         email: newContactCard.email,
         followUp: newContactCard.followUp
       };
-      if(contactArr.followUp === 1){
+      if(contactArr.followUp === 'a'){
         this.contactsArray.push(contactArr);
       }
         this.setState({ contacts: this.contactsArray });
