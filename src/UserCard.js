@@ -13,9 +13,14 @@ class UserCard extends Component {
           to={`usercontactinfo/${this.props.contact.id}`}
           className="smallIndividualLink"
         >
-          <Gravatar email={this.props.contact.email} />
-          <h1 className="fullNameCard">{this.props.contact.fullName}</h1>
-          <h2 className="companyNameCard">{this.props.contact.company}</h2>
+          <article className="date">{moment(this.props.contact.id).format('L')}</article>
+          <section className="contentCard">
+            <Gravatar email={this.props.contact.email} className="imgOnUserCard"/>
+            <article className="basicInfoCard">
+              <h1 className="fullNameCard">{this.props.contact.fullName}</h1>
+              <h2 className="companyNameCard">{this.props.contact.company}</h2>
+            </article>
+          </section>
         </Link>
       </section>
     )
