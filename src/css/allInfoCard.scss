@@ -3,8 +3,15 @@
 .allContactInfo {
   display: flex;
   flex-direction: column;
+  font: $secondary-font-color;
   font-family: $primary-font;
   margin: 0 6vw;
+}
+
+h1,
+.name,
+.company {
+  font-weight: 600;
 }
 
 .baseContactInfo {
@@ -14,6 +21,7 @@
 }
 
 .baseTitle {
+  margin-right: 1vw;
   width: 28vw;
 }
 
@@ -43,6 +51,7 @@
   hyphens: auto;
   overflow-wrap: break-word;
   word-wrap: break-word;
+  margin: 0 2vw 0 0;
 }
 
 .contactInformation {
@@ -81,4 +90,59 @@
 
 .contactNotes h2 {
   margin-top: 3vh;
+}
+
+.userImage {
+  display: flex;
+  justify-content: center;
+  margin: 2vh 0 5vh;
+}
+
+.gravatarImage {
+  border-radius: 20vh;
+  height: 20vh;
+  width: 20vh;
+}
+
+.followUpArea {
+  display: flex;
+  margin: 5vh 0 0 0;
+  justify-content: center;
+}
+
+.followUpButton {
+  background-color: $primary-dark-color;
+  border: none;
+  border-radius: 1vh;
+  color: $primary-font-color;
+  font-size: 2.5vh;
+  font-weight: 600;
+  height: 5vh;
+  width: 50vw;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.deleteButton {
+  background-color: #D32F2F;
+  border: none;
+  border-radius: 1vh;
+  color: $primary-font-color;
+  margin: 4vh 0;
+  font-size: 2.5vh;
+  font-weight: 600;
+  height: 5vh;
+  width: 50vw;
+}
+
+.title, .notes {
+  -ms-hyphens: auto;
+  -moz-hyphens: auto;
+  -webkit-hyphens: auto;
+  hyphens: auto;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
 }

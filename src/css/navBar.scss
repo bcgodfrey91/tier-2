@@ -1,10 +1,27 @@
 @import 'variables';
 
 .nav-bar {
+  align-items: center;
   background-color: $primary-dark-color;
   display: flex;
   height: 7vh;
   justify-content: space-between;
+}
+
+.star {
+  margin-left: 3vw;
+  height: 8vw;
+}
+
+.homeLink {
+  align-items: center;
+  display: flex;
+  flex: 2;
+  justify-content: center;
+}
+
+.homeIcon {
+  height: 4vh;
 }
 
 .user-name-drop {
@@ -17,10 +34,10 @@
   font-size: 3vh;
   overflow: hidden;
   outline: none;
+  text-decoration: none;
 }
 
 .plusContact {
-  // background: url(./images/plus-white.svg);
   background-color: transparent;
   background-repeat: no-repeat;
   border: none;
@@ -28,13 +45,7 @@
   cursor: pointer;
   font-family: $primary-font;
   font-size: 8vh;
-  margin-top: -2.2vh;
   overflow: hidden;
   outline: none;
   margin-right: 3vw;
-}
-
-.star {
-  margin-left: 3vw;
-  width: 8vw;
 }
