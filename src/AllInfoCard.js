@@ -32,7 +32,7 @@ class AllInfoCard extends Component {
             email
           } = this.state;
     if (this.state.contact.followUp === 0){
-      this.baseContactReference.set({ fullName, company, id, followUp: 1, email });
+      this.baseContactReference.set({ fullName, company, id, followUp: 'a', email });
     }else{
       this.baseContactReference.set({ fullName, company, id, followUp: 0, email });
     }
@@ -69,7 +69,7 @@ class AllInfoCard extends Component {
               <h2 className='baseTitle'>Company:</h2> <h2 className='companyName'>{this.state.contact.company}</h2>
             </article>
             <article className='followUpArea'>
-            <button onClick={this.handleFollowUps} className='followUpButton'>Toggle Follow Up</button>
+            <button onClick={this.handleFollowUps} className='followUpButton' id={this.state.contact.followUp}>Toggle Follow Up</button>
             </article>
           </section>
           <article className='contactInformation'>
