@@ -56,44 +56,46 @@ class AllInfoCard extends Component {
   render() {
     return(
       <section className='allContactInfo'>
-        <section className='baseContactInfo'>
-          <article className='userImage'>
-            <Gravatar email={this.state.contact.email} className='gravatarImage'/>
+        <span className="centerDesktop">
+          <section className='baseContactInfo'>
+            <article className='userImage'>
+              <Gravatar email={this.state.contact.email} className='gravatarImage'/>
+            </article>
+            <article className='name'>
+              <h2 className='baseTitle'>Full Name:</h2>
+              <h2 className='fullName'>{this.state.contact.fullName}</h2>
+            </article>
+            <article className='company'>
+              <h2 className='baseTitle'>Company:</h2> <h2 className='companyName'>{this.state.contact.company}</h2>
+            </article>
+            <article className='followUpArea'>
+            <button onClick={this.handleFollowUps} className='followUpButton'>Toggle Follow Up</button>
+            </article>
+          </section>
+          <article className='contactInformation'>
+            <h1>Contact Information</h1>
+            <h2 className='email title'>E-mail: {this.state.contact.email}</h2>
+            <h2 className='phone title'>Phone: {this.state.contact.phone} </h2>
           </article>
-          <article className='name'>
-            <h2 className='baseTitle'>Full Name:</h2>
-            <h2 className='fullName'>{this.state.contact.fullName}</h2>
+          <article className='webInformation'>
+            <h1>Web Information</h1>
+            <h2 className='linkedIn title'>LinkedIn: {this.state.contact.linkedin} </h2>
+            <h2 className='twitter title'>Twitter: {this.state.contact.twitter} </h2>
+            <h2 className='url title'>URL: {this.state.contact.url}</h2>
           </article>
-          <article className='company'>
-            <h2 className='baseTitle'>Company:</h2> <h2 className='companyName'>{this.state.contact.company}</h2>
+          <article className='contactNotes'>
+            <h1>Contact Notes</h1>
+            <h2 className='notes'> {this.state.contact.notes}</h2>
           </article>
-          <article className='followUpArea'>
-          <button onClick={this.handleFollowUps} className='followUpButton'>Toggle Follow Up</button>
+          <article className='buttons'>
+            <button
+            className='deleteButton'
+            onClick={this.handleDeleteButton}
+            >
+              Delete
+            </button>
           </article>
-        </section>
-        <article className='contactInformation'>
-          <h1>Contact Information</h1>
-          <h2 className='email title'>E-mail: {this.state.contact.email}</h2>
-          <h2 className='phone title'>Phone: {this.state.contact.phone} </h2>
-        </article>
-        <article className='webInformation'>
-          <h1>Web Information</h1>
-          <h2 className='linkedIn title'>LinkedIn: {this.state.contact.linkedin} </h2>
-          <h2 className='twitter title'>Twitter: {this.state.contact.twitter} </h2>
-          <h2 className='url title'>URL: {this.state.contact.url}</h2>
-        </article>
-        <article className='contactNotes'>
-          <h1>Contact Notes</h1>
-          <h2 className='notes'> {this.state.contact.notes}</h2>
-        </article>
-        <article className='buttons'>
-          <button
-          className='deleteButton'
-          onClick={this.handleDeleteButton}
-          >
-            Delete
-          </button>
-        </article>
+        </span>
       </section>
     )
   }
