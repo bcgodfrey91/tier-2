@@ -29,6 +29,7 @@
   align-items: center;
   color: $primary-font-color;
   font-size: 15vw;
+  margin-bottom: 3vh;
   text-align: center;
 }
 
@@ -50,11 +51,42 @@
 }
 
 #googleButton {
-  background-color: blue;
-  border:none;
-  color: white;
-  font-size: 3vh;
-  height: 5vh;
-  margin: 1vh;
-  width: 40vw;
+  background-image:url(/src/css/images/google-signin-normal-copy.png);
+  background-color: transparent;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: none;
+  height: 15vh;
+  width: 100vw;
+}
+
+@media (min-width: 700px) {
+  .SignIn {
+    background-image:url(/src/css/images/meeting.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+  }
+
+  .background-opacity {
+    background-color: rgba($primary-dark-color, .90);
+    border-radius: 15px;
+    height: 100vh;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+  .logoContainer {
+    background-color: transparent;
+  }
+
+  #googleButton {
+    background-image:url(/src/css/images/google-signin-normal.png);
+    height: 67px;
+    width: 40vw;
+  }
+
+  .signInContainer {
+    color: white;
+  }
 }
