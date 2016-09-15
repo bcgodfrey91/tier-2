@@ -41,7 +41,7 @@ class FollowUps extends Component {
   loadCards() {
     return this.state.contacts.map(contact => {
       return(
-        <div key={contact.id}>
+        <div className="contactInfoCard hello" key={contact.id}>
           <UserCard contact={contact} email={contact.email}/>
         </div>
       )
@@ -50,7 +50,7 @@ class FollowUps extends Component {
 
   render(){
     return(
-      <div className="user-cards contactsScreen">
+      <div className="userFollowUpCards contactsScreen">
         {this.loadCards()}
       </div>
     )

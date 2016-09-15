@@ -38,7 +38,7 @@ class UserCards extends Component {
   loadCards() {
     return this.state.contacts.map(contact => {
       return(
-        <div className="contactInfoCard" key={contact.id}>
+        <div className="contactInfoCard hello" key={contact.id}>
           <UserCard contact={contact} email={contact.email}/>
         </div>
       )
