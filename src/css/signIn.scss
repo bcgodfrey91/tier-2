@@ -52,7 +52,7 @@
 
 #googleButton {
   background-image:url(/src/css/images/google-signin-normal-copy.png);
-  background-color: white;
+  background-color: transparent;
   background-position: center;
   background-repeat: no-repeat;
   border: none;
@@ -61,19 +61,32 @@
 }
 
 @media (min-width: 700px) {
-  .logoContainer {
+  .SignIn {
     background-image:url(/src/css/images/meeting.jpg);
     background-repeat: no-repeat;
     background-size: cover;
-    // background-position: center;
+    background-position: center;
   }
-  .signInContainer {
-    // display: none;
+
+  .background-opacity {
+    background-color: rgba($primary-dark-color, .90);
+    border-radius: 15px;
+    height: 100vh;
+    margin-left: 200px;
+    margin-right: 200px;
+  }
+
+  .logoContainer {
+    background-color: transparent;
   }
 
   #googleButton {
     background-image:url(/src/css/images/google-signin-normal.png);
-    height: 80px;
-    width: 50vw;
+    height: 67px;
+    width: 40vw;
+  }
+
+  .signInContainer {
+    color: white;
   }
 }

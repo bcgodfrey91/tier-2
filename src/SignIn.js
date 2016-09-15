@@ -22,6 +22,7 @@ class SignIn extends Component {
   render() {
     return (
       <section className='SignIn'>
+      <section className='background-opacity'>
         <section className="logoContainer">
           <img className="logo" src="./src/css/images/main-logo.svg" alt="Remembr logo"/>
           <h1 className="logoName">Remembr</h1>
@@ -30,6 +31,7 @@ class SignIn extends Component {
           <h2 className="signIn">Log In:</h2>
           <button id="googleButton" onClick={() => firebase.auth().signInWithPopup(provider)}>
           </button>
+          </section>
         </section>
       </section>
     );
