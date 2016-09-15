@@ -123,6 +123,7 @@ class NewContact extends Component {
           <h2 className="nameDescription description ">Full Name: </h2>
           <input
             className='fullNameInput formInput'
+            placeholder='John or Jane Doe'
             onChange={this.handleFullNameChange}
           />
         </section>
@@ -130,6 +131,7 @@ class NewContact extends Component {
           <h2 className="companyDescription description">Company: </h2>
           <input
             className='companyNameInput formInput'
+            placeholder='Company Name'
             onChange={this.handleCompanyChange}
           />
         </section>
@@ -138,6 +140,7 @@ class NewContact extends Component {
           <h2 className="emailDescription description">E-mail: </h2>
           <input
             className='emailInput formInput'
+            placeholder='example@example.com'
             onChange={this.handleEmailChange}
           />
         </section>
@@ -145,6 +148,8 @@ class NewContact extends Component {
           <h2 className="phoneDescription description">Phone: </h2>
           <input
             className='phoneInput formInput'
+            type='number'
+            placeholder='303-555-5555'
             onChange={this.handlePhoneChange}
           />
         </section>
@@ -153,6 +158,7 @@ class NewContact extends Component {
           <h2 className="linkedinDescription description">LinkedIn: </h2>
           <input
             className='linkedinInput formInput'
+            placeholder='Username'
             onChange={this.handleLinkedinChange}
           />
         </section>
@@ -160,6 +166,7 @@ class NewContact extends Component {
           <h2 className="twitterDescription description">Twitter: </h2>
           <input
             className='twitterInput formInput'
+            placeholder='@username'
             onChange={this.handleTwitterChange}
           />
         </section>
@@ -167,6 +174,7 @@ class NewContact extends Component {
           <h2 className="urlDescription description">URL: </h2>
           <input
             className='urlInput formInput'
+            placeholder='http://www.example.com'
             onChange={this.handleUrlChange}
           />
         </section>
@@ -174,6 +182,7 @@ class NewContact extends Component {
 
           <textarea
             className='notesInput'
+            placeholder='Notes...'
             onChange={this.handleNotesChange}
           />
         <section className='formButtons'>
