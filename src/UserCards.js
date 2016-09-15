@@ -24,7 +24,8 @@ class UserCards extends Component {
         fullName: newContactCard.fullName,
         company:newContactCard.company,
         id: newContactCard.id,
-        email: newContactCard.email
+        email: newContactCard.email,
+        followUp: newContactCard.followUp
       };
       this.contactsArray.push(contactArr);
       this.setState({ contacts: this.contactsArray });
